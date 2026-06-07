@@ -59,40 +59,30 @@ h1 {
 
    transform: translateY(10px);
 
-   animation: fadeArtwork 0.5s forwards;
+   animation: fadeArtwork 6s forwards;
 }
 
 @keyframes fadeArtwork {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dissolve {
 
   0% {
     opacity: 0;
   }
 
-  20% {
+  15% {
     opacity: 1;
   }
 
-  60% {
+  70% {
     opacity: 1;
   }
 
   100% {
-    opacity: 0.15;
+    opacity: 0.2;
   }
 
 }
+
+
 
 .artwork img {
   width: 100%;
@@ -104,13 +94,11 @@ h1 {
 
   opacity: 0;
 
-  animation: dissolve 3.5s forwards;
-
   transition: opacity 0.5s ease;
 }
 
 .artwork:hover img {
-  opacity: 1;
+  opacity: 1 !important;
 
   filter: blur(0px);
 }
