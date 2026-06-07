@@ -511,23 +511,17 @@ document.getElementById("enter-button").onclick = function() {
 
   document.getElementById("overlay").style.opacity = "0";
 
-  document.querySelectorAll(".artwork").forEach(function(item) {
-    item.style.animationPlayState = "running";
-  });
-
   setTimeout(function() {
 
     document.getElementById("overlay").style.display = "none";
-    
-    setTimeout(function() {
 
-  document.getElementById("archive-content")
-    .style.opacity = "1";
+    document.getElementById("archive-content")
+      .style.opacity = "1";
 
-}, 2000);
+  }, 2500);
 
 };
-
+  
 function showImage(index) {
 
   currentIndex = index;
