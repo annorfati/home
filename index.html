@@ -158,8 +158,8 @@ h1 {
 
 @media (max-width: 768px) {
 
-  .info {
-    opacity: 1;
+  .artwork {
+    animation: none;
   }
 
 }
@@ -222,6 +222,37 @@ h1 {
   animation: enterFade 6s forwards;
 }
 
+#prev-btn,
+#next-btn {
+
+  position: absolute;
+
+  background: none;
+
+  border: none;
+
+  color: #F4F1F1;
+
+  font-size: 30px;
+
+  cursor: pointer;
+
+  opacity: 0.7;
+}
+
+#prev-btn {
+  left: 30px;
+}
+
+#next-btn {
+  right: 30px;
+}
+
+#prev-btn:hover,
+#next-btn:hover {
+  opacity: 1;
+}
+  
 footer {
   margin-top: 100px;
 
@@ -380,13 +411,15 @@ footer {
   
 <div id="lightbox" onclick="closeImage()">
   
-  <div id="lightbox-content">
+ <div id="lightbox-content">
+  
+   <button id="prev-btn">←</button>
 
-    <img id="lightbox-img">
+   <img id="lightbox-img">
 
-    <div id="lightbox-caption"></div>
+   <button id="next-btn">→</button>
 
-  </div>
+   <div id="lightbox-caption"></div>
 
 </div>
   
@@ -395,8 +428,16 @@ footer {
 </footer>
 
 <script>
+  
+let currentIndex = 0;
 
+const images = Array.from(
+  document.querySelectorAll(".artwork img")
+);
+  
 function openImage(img) {
+
+  currentIndex = images.indexOf(img);
 
   document.getElementById("lightbox").style.display = "flex";
 
@@ -404,7 +445,6 @@ function openImage(img) {
 
   document.getElementById("lightbox-caption").innerHTML =
     img.dataset.caption;
-
 }
 
 function closeImage() {
@@ -426,6 +466,75 @@ document.getElementById("enter-button").onclick = function() {
   }, 1500);
 
 };
+
+function showImage(index) {
+
+  currentIndex = index;
+
+  const img = images[currentIndex];
+
+  document.getElementById("lightbox-img").src = img.src;
+
+  document.getElementById("lightbox-caption").innerHTML =
+    img.dataset.caption;
+}
+
+document.getElementById("next-btn").onclick = function(event) {
+
+  event.stopPropagation();
+
+  showImage((currentIndex + 1) % images.length);
+
+};
+
+document.getElementById("prev-btn").onclick = function(event) {
+
+  event.stopPropagation();
+
+  showImage(
+    (currentIndex - 1 + images.length) % images.length
+  );
+
+};
+
+function updateOpacity() {
+
+  const artworks =
+    document.querySelectorAll(".artwork");
+
+  const screenCenter =
+    window.innerHeight / 2;
+
+  artworks.forEach(function(item) {
+
+    const rect =
+      item.getBoundingClientRect();
+
+    const itemCenter =
+      rect.top + rect.height / 2;
+
+    const distance =
+      Math.abs(itemCenter - screenCenter);
+
+    const maxDistance =
+      window.innerHeight / 2;
+
+    let opacity =
+      1 - distance / maxDistance;
+
+    opacity =
+      Math.max(0.25, opacity);
+
+    item.style.opacity = opacity;
+
+  });
+
+}
+
+window.addEventListener("scroll", updateOpacity);
+
+updateOpacity();
+  
 </script>
 
 </body>
