@@ -226,7 +226,14 @@ h1 {
 
   z-index: 9999;
 
-  transition: opacity 1.5s ease;
+  transition: opacity 2.5s ease;
+}
+
+#archive-content {
+
+  opacity: 0;
+
+  transition: opacity 2s ease;
 }
 
 #enter-button {
@@ -299,6 +306,8 @@ footer {
 <div id="overlay">
  <div id="enter-button"></div>
 </div>
+
+<div id="archive-content">
   
 <h1>an online archive</h1>
 <p class="subtitle" id="subtitle">
@@ -454,7 +463,8 @@ footer {
 <footer>
   ongoing archive, 2025–
 </footer>
-
+</div>
+  
 <script>
   
 let currentIndex = 0;
@@ -508,8 +518,14 @@ document.getElementById("enter-button").onclick = function() {
   setTimeout(function() {
 
     document.getElementById("overlay").style.display = "none";
+    
+    setTimeout(function() {
 
-  }, 1500);
+  document.getElementById("archive-content")
+    .style.opacity = "1";
+
+}, 2000);
+  }, 2500);
 
 };
 
