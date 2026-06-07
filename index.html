@@ -16,8 +16,35 @@ h1 {
   font-weight: 100;
   letter-spacing: 6px;
   font-size: 22px;
+
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
-  
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.subtitle {
+  opacity: 0;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  color: #CBBEBE;
+
+  animation: fadeIn 2s forwards;
+
+  animation-delay: 1s;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -27,29 +54,61 @@ h1 {
 
 .artwork {
   text-align: center;
+
+   opacity: 0;
+
+   transform: translateY(10px);
+
+   animation: fadeArtwork 1.5s forwards;
+}
+
+@keyframes fadeArtwork {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .artwork img {
   width: 100%;
-  height: auto;
+  max-height: 350px;
+
+  object-fit: contain;
+
   cursor: pointer;
-  transition: opacity 0.3s ease;
+
+  opacity: 0.55;
+
+  filter: blur(1px);
+
+  transition: all 0.8s ease;
 }
 
-.artwork img:hover {
-  opacity: 0.8;
+.artwork:hover img {
+  opacity: 1;
+
+  filter: blur(0px);
 }
 
 .info {
   margin-top: 10px;
 
   color: #CBBEBE;
-
   font-size: 15px;
-
   font-family: Commit Mono, monospace;
-
   letter-spacing: 2px;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.artwork:hover .info {
+  opacity: 1;
 }
   
 #lightbox {
@@ -79,74 +138,27 @@ h1 {
 <body>
 
 <h1>archive</h1>
+<p class="subtitle">
+  just having fun and making art :)
+</p>
+
 <div class="gallery">
   
-<div class="artwork">
-  <img src="Untitled_0.jpeg" onclick="openImage(this.src)">
+<div class="artwork" style="animation-delay:0.5s">
+  <img src="か.jpg" onclick="openImage(this.src)">
   <div class="info">
-    Untitled 0, 2025<br>
+    か, 2026<br>
   </div>
 </div>
 
-<div class="artwork">
-  <img src="Untitled_1.jpeg" onclick="openImage(this.src)">
+<div class="artwork" style="animation-delay:1s">
+  <img src="Cordelia.jpeg" onclick="openImage(this.src)">
   <div class="info">
-    Untitled 1, 2025<br>
+    Cordelia, 2026<br>
   </div>
 </div>
 
-<div class="artwork">
-  <img src="Inverness.jpeg" onclick="openImage(this.src)">
-  <div class="info">
-    Inverness, 2025<br>
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Neoteny.jpeg" onclick="openImage(this.src)">
-  <div class="info">
-    Neoteny, 2025<br>
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Bundle1.jpg" onclick="openImage(this.src)">
-  <div class="info">
-    Bundle1, 2026<br>
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Bundle2.jpg" onclick="openImage(this.src)">
-  <div class="info">
-    Bundle2, 2026<br>
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Nude.jpeg" onclick="openImage(this.src)">
-  <div class="info">
-    Nude, 2026<br>
-    Radiohead, 2008.
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Hm.jpeg" onclick="openImage(this.src)">
-  <div class="info">
-    Shadows and Dust, 2026<br>
-  </div>
-</div>
-
-<div class="artwork">
-  <img src="Gibbon.jpeg" onclick="openImage(this.src)">
-  <div class="info">
-    Gibbon, 2026<br>
-    Wax and Wane, Cocteau Twins, 1982.
-  </div>
-</div>
-
-<div class="artwork">
+<div class="artwork" style="animation-delay:1.5s">
   <img src="Ayurveda.jpg" onclick="openImage(this.src)">
   <div class="info">
     Ayurveda, 2026<br>
@@ -154,17 +166,69 @@ h1 {
   </div>
 </div>
 
-<div class="artwork">
-  <img src="Cordelia.jpeg" onclick="openImage(this.src)">
+
+<div class="artwork" style="animation-delay:2s">
+  <img src="Gibbon.jpeg" onclick="openImage(this.src)">
   <div class="info">
-    Cordelia, 2026<br>
+    Gibbon, 2026<br>
+    Wax and Wane, Cocteau Twins, 1982.
   </div>
 </div>
 
-<div class="artwork">
-  <img src="か.jpg" onclick="openImage(this.src)">
+<div class="artwork" style="animation-delay:2.5s">
+  <img src="Hm.jpeg" onclick="openImage(this.src)">
   <div class="info">
-    か, 2026<br>
+    Shadows and Dust, 2026<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:3s">
+  <img src="Nude.jpeg" onclick="openImage(this.src)">
+  <div class="info">
+    Nude, 2026<br>
+    Radiohead, 2008.
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:3.5s">
+  <img src="Bundle2.jpg" onclick="openImage(this.src)">
+  <div class="info">
+    Bundle2, 2026<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:4s">
+  <img src="Bundle1.jpg" onclick="openImage(this.src)">
+  <div class="info">
+    Bundle1, 2026<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:4.5s">
+  <img src="Neoteny.jpeg" onclick="openImage(this.src)">
+  <div class="info">
+    Neoteny, 2025<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:5s">
+  <img src="Inverness.jpeg" onclick="openImage(this.src)">
+  <div class="info">
+    Inverness, 2025<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:5.5s">
+  <img src="Untitled_1.jpeg" onclick="openImage(this.src)">
+  <div class="info">
+    Untitled 1, 2025<br>
+  </div>
+</div>
+
+<div class="artwork" style="animation-delay:6s">
+  <img src="Untitled_0.jpeg" onclick="openImage(this.src)">
+  <div class="info">
+    Untitled 0, 2025<br>
   </div>
 </div>
 
