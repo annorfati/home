@@ -67,8 +67,15 @@ h1{
     animation:fadeIn 2s forwards;
     animation-delay:.5s;
 
-}
+    transition:opacity 1.5s ease;
 
+    height:30px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
 .collections{
 
     max-width:720px;
@@ -211,8 +218,8 @@ home
 
 <h1>collections</h1>
 
-<p class="subtitle">
-...🗒
+<p class="subtitle" id="subtitle">
+.
 </p>
 
 <div class="collections">
@@ -268,7 +275,42 @@ home
 ongoing archive, 2025–
 
 </footer>
+    
+<script>
 
+const subtitles = [
+  ".",
+  "..",
+  "...",
+  "...🗒",
+  "...🗒",
+  "...🗒"
+];
+
+let subtitleIndex = 0;
+
+setInterval(function() {
+
+  const subtitle =
+    document.getElementById("subtitle");
+
+  subtitle.style.opacity = "0";
+
+  setTimeout(function() {
+
+    subtitleIndex =
+      (subtitleIndex + 1) % subtitles.length;
+
+    subtitle.innerHTML =
+      subtitles[subtitleIndex];
+
+    subtitle.style.opacity = "1";
+
+  }, 1000);
+
+}, 1000);
+
+</script>
 </body>
 
 </html>
