@@ -121,8 +121,6 @@ h1 {
 .gallery.fade-out{
     opacity:0;
 }
-  
-}
 
 @media (max-width: 900px) {
     .gallery {
@@ -130,6 +128,33 @@ h1 {
     }
 }
 
+@media (max-width:600px){
+
+    .gallery{
+        grid-template-columns:1fr;
+        gap:30px;
+        padding:20px;
+    }
+
+    #pagination{
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        gap:15px;
+        flex-wrap:nowrap;
+    }
+
+    .nav-btn{
+        font-size:13px;
+        padding:4px 6px;
+    }
+
+    .page-indicator{
+        min-width:60px;
+    }
+
+}
+  
 @media(max-width:600px){
 
     #pagination{
@@ -254,30 +279,6 @@ h1 {
     color:#DFD7D7;
     letter-spacing:3px;
 }
-
-@media(max-width:600px){
-
-    #pagination{
-
-        flex-direction:column;
-        gap:12px;
-
-    }
-
-    .page-numbers{
-
-        justify-content:center;
-
-    }
-
-    .page-btn,
-    .nav-btn{
-
-        font-size:13px;
-
-    }
-  
-}   
   
 #lightbox {
   display: none;
@@ -1029,7 +1030,7 @@ function renderPagination(){
 
     pagination.innerHTML = "";
 
-    const mobile = window.innerWidth <= 600;
+    const mobile = window.matchMedia("(max-width:600px)").matches;
 
     const prev = document.createElement("button");
     prev.className = "nav-btn";
@@ -1042,7 +1043,9 @@ function renderPagination(){
     next.textContent = mobile ? ">" : "older →";
     next.disabled = currentPage === totalPages;
     next.onclick = () => showPage(currentPage + 1);
-
+    
+    const indicator = document.createElement("span");
+    indicator.textContent = `${currentPage}/${totalPages}`;
     pagination.append(prev);
     pagination.append(indicator);
     pagination.append(next);
