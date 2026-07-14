@@ -1015,36 +1015,31 @@ function showPage(page){
 
 function renderPagination(){
 
-    pagination.innerHTML="";
+    pagination.innerHTML = "";
 
-    const prev=document.createElement("button");
-    prev.className="nav-btn";
-    prev.textContent="← newer";
-    prev.disabled=currentPage===1;
-    prev.onclick=()=>showPage(currentPage-1);
+    const prev = document.createElement("button");
+    prev.className = "nav-btn";
+    prev.textContent = "← newer";
+    prev.disabled = currentPage === 1;
+    prev.onclick = () => showPage(currentPage - 1);
 
-    pagination.appendChild(prev);
+    const indicator = document.createElement("span");
+    indicator.style.letterSpacing = "2px";
+    indicator.style.opacity = "0.8";
+    indicator.textContent = `${currentPage}/${totalPages}`;
 
-    const numbers=document.createElement("div");
-    numbers.className="page-numbers";
+    const next = document.createElement("button");
+    next.className = "nav-btn";
+    next.textContent = "older →";
+    next.disabled = currentPage === totalPages;
+    next.onclick = () => showPage(currentPage + 1);
 
-    for(let i=1;i<=totalPages;i++){
+    pagination.append(prev);
+    pagination.append(indicator);
+    pagination.append(next);
 
-        const btn=document.createElement("button");
-
-        btn.className="page-btn";
-
-        if(i===currentPage)
-            btn.classList.add("active");
-
-        btn.textContent=i;
-
-        btn.onclick=()=>showPage(i);
-
-        numbers.appendChild(btn);
-
-    }
-
+}
+  
     pagination.appendChild(numbers);
 
     const next=document.createElement("button");
