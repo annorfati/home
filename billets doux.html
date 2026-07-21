@@ -50,7 +50,17 @@ h1 {
 
   animation-delay: 1s;
 }
+  
+.heart {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
 
+  animation: typing 2.5s steps(11, end) forwards;
+  animation-delay: 4s;
+}
+  
 .highlight {
   color: #CBBEBE;
 }
@@ -147,9 +157,9 @@ footer {
   
 <div class="content">
   
-  <p class="line1">
-  <span class="highlight">heart child</span><br>
-  that's what i call you.
+<p class="line1">
+  <span class="heart highlight">heart child</span><br>
+  <span class="rest">that's what i call you.</span>
 </p>
 
   <p class="line2">
