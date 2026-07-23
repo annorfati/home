@@ -159,43 +159,46 @@ h1 {
   
 .heartbeat {
   display: inline-block;
-  transform-origin: center;
-  animation: heartbeat 5s infinite;
+  animation: heartbeat 5s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
 
   /* Rest */
   0%, 40%, 100% {
-    transform: scale(1);
-    opacity: 0.9;
-    color: #95AEC6;
+    opacity: 0.92;
+    color: #B3C5D6;
+    text-shadow: none;
   }
 
   /* First beat */
   8% {
-    transform: scale(1.06);
     opacity: 1;
     color: #EEF6FF;
+    text-shadow:
+      0 0 4px rgba(220, 235, 250, 0.25);
   }
 
+  /* Return */
   16% {
-    transform: scale(1);
-    opacity: 0.9;
-    color: #95AEC6;
+    opacity: 0.92;
+    color: #B3C5D6;
+    text-shadow: none;
   }
 
   /* Second beat */
   24% {
-    transform: scale(1.03);
     opacity: 1;
     color: #EEF6FF;
+    text-shadow:
+      0 0 3px rgba(220, 235, 250, 0.18);
   }
 
+  /* Return */
   32% {
-    transform: scale(1);
-    opacity: 0.9;
-    color: #95AEC6;
+    opacity: 0.92;
+    color: #B3C5D6;
+    text-shadow: none;
   }
 
 }
