@@ -10,9 +10,16 @@ body {
   background: #282020;
   color: #A28B8B;
   font-family: Commit Mono, monospace;
-  text-align: center;
+
   margin: 0;
-  padding: 15px;
+  padding: 20px;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -162,11 +169,48 @@ img {
   display: block;
 }
 
+.artwork {
+  opacity: 0;
+  transform: scale(0.97);
+
+  animation: reveal 4s ease forwards;
+  animation-delay: 3.2s;
+
+  max-width: 90vw;
+  max-height: 75vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  margin: 70px auto 0;
+}
+
+@keyframes reveal {
+
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
 @media (max-width: 600px) {
 
   body {
     padding: 12px;
   }
+
+.artwork {
+  max-width: 95vw;
+  max-height: 85vh;
+}
 
   h1 {
     font-size: 20px;
@@ -212,7 +256,11 @@ img {
 <p class="subtitle">
   [REDACTED]
 </p>
-
+  
+<img
+    src="pale nightshade.jpeg"
+    alt="pale nightshade"
+    class="artwork">
 </div>
 
 <a class="back-link" href="billets-doux.html">
