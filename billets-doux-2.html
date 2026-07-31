@@ -248,10 +248,8 @@ img {
     display:inline-block;
 
     transition:
-
-        opacity 2s ease,
-
-        transform 2.4s cubic-bezier(.22,.61,.36,1);
+        opacity 2.5s ease,
+        transform 3.5s cubic-bezier(.22,.61,.36,1);
 
 }
   
@@ -537,10 +535,9 @@ function revealRipple(){
 
     const fragments = [...document.querySelectorAll(".fragment")];
 
-    const poemBox = content.getBoundingClientRect();
-
-    const centreX = poemBox.left + poemBox.width / 2;
-    const centreY = poemBox.top + poemBox.height / 2;
+    const artBox = artwork.getBoundingClientRect();
+    const centreX = artBox.left + artBox.width / 2;
+    const centreY = artBox.bottom;
 
     fragments.forEach(fragment => {
 
@@ -571,7 +568,7 @@ function revealRipple(){
               fragment.style.transform = "translate(0,0)";
             }, distance * 8);
 
-        }, distance * 10);
+        }, distance * 20);
 
     });
 
