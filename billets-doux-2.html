@@ -523,13 +523,11 @@ artwork.addEventListener("click", () => {
 
     container.classList.add("hide");
 
+setTimeout(() => {
+    container.style.display = "none";
     content.classList.add("show");
-
-    requestAnimationFrame(() => {
-        revealRipple();
-    });
-
-});
+    revealRipple();
+}, 2800);
 
 function revealRipple(){
 
