@@ -133,7 +133,6 @@ h1 {
     line-height:1.8;
     overflow-wrap: break-word;
   
-    opacity:0;
     pointer-events:none;
 }
   
@@ -176,7 +175,7 @@ footer {
 }
   
 .content.show {
-    opacity: 1;
+  
     pointer-events: auto;
 }
 img {
@@ -419,11 +418,7 @@ img {
     <br>
   
     <span class="fragment">
-      coloured in
-    </span>
-   
-    <span class="fragment">
-      ochre and nightshade,
+      coloured in ochre and nightshade,
     </span> 
     
     <br>
@@ -532,7 +527,9 @@ artwork.addEventListener("click", () => {
 
     content.classList.add("show");
 
-    revealRipple();
+    requestAnimationFrame(() => {
+        revealRipple();
+    });
 
 });
 
@@ -558,17 +555,23 @@ function revealRipple(){
         const dy = y - centreY;
 
         const length = Math.hypot(dx, dy) || 1;
-        const drift = 8;
+        const drift = 35;
 
         fragment.style.transform =
             `translate(${dx / length * drift}px, ${dy / length * drift}px)`;
 
         setTimeout(() => {
 
-            fragment.style.opacity = 1;
-            fragment.style.transform = "translate(0px,0px)";
+            fragment.style.opacity = 0;
 
-        }, distance * 3);
+            fragment.style.transform =
+              `translate(${dx/length*35}px, ${dy/length*35}px)`;
+            setTimeout(() => {
+              fragment.style.opacity = 1;
+              fragment.style.transform = "translate(0,0)";
+            }, distance * 8);
+
+        }, distance * 10);
 
     });
 
