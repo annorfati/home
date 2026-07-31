@@ -537,7 +537,7 @@ function revealRipple(){
 
     const artBox = artwork.getBoundingClientRect();
     const centreX = artBox.left + artBox.width / 2;
-    const centreY = artBox.bottom;
+    const centreY = artBox.bottom + 100;
 
     fragments.forEach(fragment => {
 
@@ -564,7 +564,8 @@ function revealRipple(){
             fragment.style.transform =
               `translate(${dx/length*35}px, ${dy/length*35}px)`;
             setTimeout(() => {
-              fragment.style.opacity = 1;
+              const brightness = Math.max(0.75, 1 - distance / 1000);
+              fragment.style.opacity = brightness;
               fragment.style.transform = "translate(0,0)";
             }, distance * 8);
 
