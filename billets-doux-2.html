@@ -537,7 +537,7 @@ function revealRipple(){
 
     const artBox = artwork.getBoundingClientRect();
     const centreX = artBox.left + artBox.width / 2;
-    const centreY = artBox.top + artBox.height * 0.6;
+    const centreY = artBox.top + artBox.height * 0.2;
 
     fragments.forEach(fragment => {
 
@@ -569,7 +569,7 @@ function revealRipple(){
               fragment.style.transform = "translate(0,0)";
             }, distance * 8);
 
-        }, distance * 40);
+        }, distance * 20);
 
     });
 
