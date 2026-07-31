@@ -242,7 +242,7 @@ img {
   animation-delay: 7.2s;
 }
 
-.word{
+.fragment{
 
     opacity:0;
 
@@ -253,8 +253,6 @@ img {
         opacity 2s ease,
 
         transform 2.4s cubic-bezier(.22,.61,.36,1);
-
-    will-change:transform,opacity;
 
 }
   
@@ -344,62 +342,165 @@ img {
 <div class="content">
   
 <p class="line1">
-    <span class="highlight">
-    down by the riverbed,<br><br>
-    sand waves<br>
+    <span class="fragment">
+    down by the riverbed,
+    </span>
+  
+    <br><br>
+  
+    <span class="fragment">
+    sand waves
+    </span>
+
+    <br>
+  
+    <span class="fragment">
     shuffle under our heels.
+    </span>
+
 </p>
 
 <p class="line2">
-    we wander<br>
+   <span class="fragment">
+    we wander
+   </span>
+  
+   <br>
+  
+   <span class="fragment">
     naked and blind.
+   </span>
+  
 </p>
 
 <p class="line3">
-    no seeing,<br>
-    no perceiving,<br>
+  <span class="fragment">
+      no seeing,
+  </span>
+  
+  <br>
+
+  <span class="fragment">
+    no perceiving,
+  </span>
+  
+  <br>
+  
+  <span class="fragment">
     no apprehending.
+  </span>
+  
 </p>
   
 <p class="line4">
-    yet i can still feel<br>
-    the murmurs of fish<br>
+  <span class="fragment">
+    yet i can still feel
+  </span>
+  
+  <br>
+
+  <span class="fragment">
+    the murmurs of fish
+  </span>
+  
+  <br>
+  
+  <span class="fragment">
     vibrate through the reeds.
+  </span>
+  
 </p>
 
 <p class="line5">
-    a strange sensation,<br>
-    coloured in ochre and nightshade,<br>
-    soon wraps around us.
+    <span class="fragment">
+      a strange sensation,
+    </span>
+    
+    <br>
+  
+    <span class="fragment">
+      coloured in
+    </span>
+   
+    <span class="fragment">
+      ochre and nightshade,
+    </span> 
+    
+    <br>
+  
+    <span class="fragment">
+      soon wraps around us.
+    </span>
+  
 </p>
 
 <p class="line6">
-     tiny mouths,<br>
-     searching for sunlight to feed on,<br>
+     <span class="fragment">
+       tiny mouths,
+     </span>
+    
+     <br>
+
+     <span class="fragment">
+     searching for sunlight to feed on,
+     </span>
+    
+     <br>
+
+     <span class="fragment">
      race past in thousands.
+     </span>
+  
 </p>
 
 <p class="line7">
-     somewhere upstream,<br>
+     <span class="fragment">
+       somewhere upstream,
+     </span>
+     
+     <br>
+
+     <span class="fragment">
      the water grows warm.
+     </span>
+  
 </p>
 
 <p class="line8">
-     …
+    <span class="fragment"> 
+      …
+    </span>
+  
 </p>
 
 <p class="line9">
-     out of the gloom<br>
+    <span class="fragment"> 
+      out of the gloom
+    </span>
+    
+    <br>
+
+    <span class="fragment">
      springs a flesh cocoon
+    </span>
+  
 </p>
 
 <p class="line10">
-     ochre and nightshade<br>
+     <span class="fragment">
+       ochre and nightshade
+     </span>
+  
+     <br>
+
+     <span class="fragment">
      i gift these to you
+     </span>
+  
 </p>
   
 <p class="line11">
-     <span class="highlight">31st july 2026.</span><br>
+     <span class="highlight fragment">31st july 2026.</span><br>
 </p>
 
 </div>
@@ -423,20 +524,6 @@ const artwork = document.querySelector(".artwork");
 const container = document.querySelector(".artwork-container");
 const content = document.querySelector(".content");
 
-/* Wrap every word */
-
-content.querySelectorAll("p").forEach(p => {
-
-    p.innerHTML = p.innerHTML.replace(
-
-        /([^\s<]+)/g,
-
-        '<span class="word">$1</span>'
-
-    );
-
-});
-
 /* Click artwork */
 
 artwork.addEventListener("click", () => {
@@ -451,15 +538,13 @@ artwork.addEventListener("click", () => {
 
 function revealRipple(){
 
-    const words = [...document.querySelectorAll(".word")];
+    const fragments = [...document.querySelectorAll(".word")];
 
     const poemBox = content.getBoundingClientRect();
 
     const centreX = poemBox.left + poemBox.width / 2;
 
     const centreY = poemBox.top + poemBox.height / 2;
-
-}
 
 words.forEach(word => {
 
@@ -499,6 +584,8 @@ setTimeout(() => {
 }, distance * 3);
 
 });
+
+}
   
 </script>
   
