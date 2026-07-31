@@ -126,7 +126,7 @@ h1 {
 
     max-width:700px;
 
-    margin:100px auto;
+    margin:40px auto;
 
     text-align:left;
 
@@ -557,19 +557,19 @@ function revealRipple(){
         fragment.style.transform =
             `translate(${dx / length * drift}px, ${dy / length * drift}px)`;
 
-        setTimeout(() => {
+fragment.style.opacity = 0;
 
-            fragment.style.opacity = 0;
+fragment.style.transform =
+    `translate(${dx/length*drift}px, ${dy/length*drift}px)`;
 
-            fragment.style.transform =
-              `translate(${dx/length*35}px, ${dy/length*35}px)`;
-            setTimeout(() => {
-              const brightness = Math.max(0.75, 1 - distance / 1000);
-              fragment.style.opacity = brightness;
-              fragment.style.transform = "translate(0,0)";
-            }, distance * 8);
+setTimeout(() => {
 
-        }, distance * 20);
+    const brightness = Math.max(0.75, 1 - distance / 1000);
+
+    fragment.style.opacity = brightness;
+    fragment.style.transform = "translate(0,0)";
+
+}, distance * 12);
 
     });
 
