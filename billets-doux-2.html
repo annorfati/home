@@ -531,8 +531,6 @@ const content = document.querySelector(".content");
 
 artwork.addEventListener("click", () => {
 
-    container.classList.add("hide");
-
 container.classList.add("hide");
 
 content.classList.add("show");
@@ -541,6 +539,8 @@ requestAnimationFrame(() => {
     revealRipple();
 });
 
+});
+  
 function revealRipple(){
 
     const fragments = [...document.querySelectorAll(".fragment")];
