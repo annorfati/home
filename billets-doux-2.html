@@ -546,8 +546,8 @@ function revealRipple(){
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
-        const distance = Math.hypot(x - centreX, y - centreY);
-
+        const distance = Math.max(0, Math.hypot(x - centreX, y - centreY) - 450);
+      
         const dx = x - centreX;
         const dy = y - centreY;
 
