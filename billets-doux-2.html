@@ -123,17 +123,23 @@ h1 {
 }
 
 .content{
+    position:absolute;
+    inset:0;
+
+    opacity:1;
 
     max-width:700px;
 
-    margin:20px auto;
+    margin:0;
 
-    text-align:left;
-
-    line-height:1.8;
-    overflow-wrap: break-word;
-  
     pointer-events:none;
+}
+
+.stage{
+    position:relative;
+    width:700px;
+    max-width:90vw;
+    min-height:75vh;
 }
   
 .back-link {
@@ -323,6 +329,8 @@ img {
   02, conception
 </p>
 
+<div class="stage">
+  
 <div class="artwork-container">
   
   <img
@@ -498,6 +506,8 @@ img {
 
 </div>
 
+</div>
+  
 <a class="back-link" href="billets-doux.html">
   ← 01
 </a>
@@ -506,7 +516,7 @@ img {
   home
 </a>
 
-
+  
 <footer>
   ongoing website, 2026-
 </footer>
