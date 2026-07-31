@@ -536,8 +536,8 @@ function revealRipple(){
     const fragments = [...document.querySelectorAll(".fragment")];
 
     const artBox = artwork.getBoundingClientRect();
-    const centreX = artBox.left + artBox.width / 2;
-    const centreY = artBox.top + artBox.height * 0.2;
+    const centreX = window.innerWidth / 2;
+    const centreY = 200;
 
     fragments.forEach(fragment => {
 
