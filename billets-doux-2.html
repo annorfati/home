@@ -538,52 +538,39 @@ artwork.addEventListener("click", () => {
 
 function revealRipple(){
 
-    const fragments = [...document.querySelectorAll(".word")];
+    const fragments = [...document.querySelectorAll(".fragment")];
 
     const poemBox = content.getBoundingClientRect();
 
     const centreX = poemBox.left + poemBox.width / 2;
-
     const centreY = poemBox.top + poemBox.height / 2;
 
-words.forEach(word => {
+    fragments.forEach(fragment => {
 
-    const rect = word.getBoundingClientRect();
+        const rect = fragment.getBoundingClientRect();
 
-    const x = rect.left + rect.width / 2;
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
 
-    const y = rect.top + rect.height / 2;
+        const distance = Math.hypot(x - centreX, y - centreY);
 
-    const distance = Math.hypot(
+        const dx = x - centreX;
+        const dy = y - centreY;
 
-        x - centreX,
+        const length = Math.hypot(dx, dy) || 1;
+        const drift = 8;
 
-        y - centreY
+        fragment.style.transform =
+            `translate(${dx / length * drift}px, ${dy / length * drift}px)`;
 
-    );
-  
-     const dx = x - centreX;
-     const dy = y - centreY;
+        setTimeout(() => {
 
-     const length = Math.hypot(dx, dy) || 1;
+            fragment.style.opacity = 1;
+            fragment.style.transform = "translate(0px,0px)";
 
-     const drift = 8;
+        }, distance * 3);
 
-     word.style.transform = `translate(${
-         dx / length * drift
-     }px,${
-         dy / length * drift
-     }px)`;
-
-setTimeout(() => {
-
-    word.style.opacity = 1;
-
-    word.style.transform = "translate(0px,0px)";
-
-}, distance * 3);
-
-});
+    });
 
 }
   
