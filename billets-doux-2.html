@@ -199,7 +199,7 @@ img {
 
   object-fit: contain;
 
-  margin: 20px auto 0;
+  margin: 50px auto 0;
 
   cursor:pointer;
 
@@ -546,7 +546,7 @@ function revealRipple(){
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
-        const distance = Math.max(0, Math.hypot(x - centreX, y - centreY) - 450);
+        const distance = Math.max(0, y - 100);
       
         const dx = x - centreX;
         const dy = y - centreY;
