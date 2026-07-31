@@ -282,8 +282,12 @@ img {
   }
 
 .artwork {
-  max-width: 95vw;
-  max-height: 85vh;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    margin: 30px auto 0;
 }
 
   h1 {
@@ -300,7 +304,10 @@ img {
     margin: 50px auto;
     line-height: 1.7;
   }
-
+  .stage {
+    width: 100%;
+    min-height: 100vh; 
+  }
   .back-link {
     left: 20px;
     bottom: 20px;
