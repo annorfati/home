@@ -313,6 +313,25 @@ img {
 
 }
 
+.tap-to-load {
+  text-align: center;
+  margin-bottom: 55px;
+
+  color: #9B8DA0;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 1.5s ease;
+}
+
+.tap-to-load.visible {
+  opacity: 0.55;
+  pointer-events: auto;
+}
+  
 @media (max-width: 600px) {
 
   body {
@@ -352,6 +371,11 @@ img {
   .stage {
     width: 100%;
     min-height: 1200px;
+  }
+
+  .tap-to-load {
+    margin-bottom: 40px;
+    font-size: 9px;
   }
   
   .back-link {
@@ -400,6 +424,10 @@ img {
 </div>
   
 <div class="content">
+  
+    <div class="tap-to-load">
+    tap to fully load
+    </div>
   
 <p class="line1">
     <span class="fragment">
@@ -581,6 +609,7 @@ img {
 const artwork = document.querySelector(".artwork");
 const container = document.querySelector(".artwork-container");
 const content = document.querySelector(".content");
+const tapPrompt = document.querySelector(".tap-to-load");
 
 artwork.addEventListener("click", () => {
 
