@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+  background: #4A0404;
+  color: #9B0808;
+  font-family: "Commit Mono", monospace;
+
+  margin: 0;
+  padding: 20px;
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.welcome {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: min(500px, 78vw);
+  padding: 55px 30px;
+
+  background: rgba(252, 250, 245, 0.8);
+
+  border-radius: 22px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation: welcomeIn 2s ease forwards;
+
+  z-index: 10;
+
+  box-sizing: border-box;
+}
+
+.welcome p {
+  margin: 0;
+
+  color: #382D11;
+
+  font-size: 18px;
+
+  letter-spacing: 3px;
+}
+
+.hors-doeuvres {
+  text-align: left;
+  line-height: 1.8;
+}
+
+.hors-doeuvres p {
+  margin: 0 0 1.5em;
+}
+  
+@keyframes welcomeIn {
+
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+}
+  
+.welcome.dismiss {
+  opacity: 0;
+
+  transform: translate(-50%, -52%);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+
+  pointer-events: none;
+}
+
+.poem {
+
+  max-width: 700px;
+
+  width: 100%;
+
+  text-align: left;
+
+  line-height: 1.8;
+
+  opacity: 0;
+
+  transition: opacity 2s ease;
+
+  pointer-events: none;
+}
+
+.poem.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.poem p {
+  margin: 0 0 1.5em;
+}
+
+.fragment {
+  opacity: 0;
+  display: inline-block;
+
+  transition:
+    opacity 4s ease,
+    transform 5s cubic-bezier(.22,.61,.36,1);
+}
+
+.fragment.instant {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+  transition: none !important;
+}
+
+.poem-title {
+
+  text-align: center;
+
+  margin-bottom: 70px;
+
+  color: #382D11;
+
+  font-size: 13px;
+
+  letter-spacing: 3px;
+}
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .welcome {
+    width: 82vw;
+
+    padding: 45px 20px;
+
+    border-radius: 18px;
+  }
+
+  .hors-doeuvres {
+  text-align: left;
+  line-height: 1.8;
+  }
+
+  .hors-doeuvres p {
+  margin: 0 0 1.5em;
+  }
+
+  .poem {
+
+    width: 100%;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .poem-title {
+    margin-bottom: 50px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="welcome"> 
+  
+  <div class="hors-doeuvres">
+    <p><span class="fragment">hors d'oeuvres</span></p>
+
+    <p><span class="fragment">i grow cold<br>
+      waiting for you<br>
+      to pick me up<br>
+      just to decide<br>
+      that you don’t want to eat anymore
+    </span></p>
+    
+    <p><span class="fragment">pick it up<br>
+      hold it in my hands<br>
+      watch it dissolve<br>
+      repeat
+    </span></p>
+
+    <p><span class="fragment">these are the things we sow</span></p>
+    
+    <p><span class="fragment">3rd august 2026</span></p>
+  </div>
+  
+</div>
+
+<div class="poem">
+
+  <div class="poem-title">
+    The Consummation
+  </div>
+
+<p><span class="fragment">loin and merlot<br>
+is the new bread and wine.
+</span></p>
+
+<p><span class="fragment">you can:<br>
+caress it,<br>
+massage it,<br>
+bite into it.</span></p>
+
+<p><span class="fragment">drink my blood and eat my body<br>
+grind my bones up<br>
+in a blender<br>
+and boil the soup;<br>
+it’s full of collagen<br>
+</span></p>
+
+<p><span class="fragment">this aftertaste<br>
+is so disgusting<br>
+almost like<br>
+eyes crawling over my body<br>
+eyes exploding out of their sockets</span></p>
+
+<p><span class="fragment">drilling holes in the space between their eyes<br>
+climb inside one and make a little home<br>
+curl up and read a book<br>
+on parenting and relational psychology<br></span>
+<span class="fragment">why not?</span></p>
+
+<p><span class="fragment">7th august 2026</span></p>
+  
+</div>
+
+<script>
+
+const welcome = document.querySelector(".welcome");
+const poem = document.querySelector(".poem");
+
+let poemLoading = false;
+let poemFinished = false;
+
+welcome.addEventListener("click", (event) => {
+
+  event.stopPropagation();
+
+  welcome.classList.add("dismiss");
+
+  poem.classList.add("show");
+
+  poemLoading = true;
+
+});
+
+document.addEventListener("click", () => {
+
+  if (!poemLoading || poemFinished) return;
+
+  document.querySelectorAll(".poem .fragment").forEach(fragment => {
+
+    fragment.classList.add("instant");
+
+  });
+
+  poemFinished = true;
+  poemLoading = false;
+
+});
+
+</script>
+
+</body>
+</html>
+
+
