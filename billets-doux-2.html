@@ -85,7 +85,17 @@ h1 {
   display: inline-block;
   animation: holePulse 3s ease-in-out infinite;
 }
+  
+#hole {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2.5s ease;
+}
 
+#hole.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
 @keyframes holePulse {
   0%, 100% {
     transform: scale(1);
@@ -572,8 +582,6 @@ const artwork = document.querySelector(".artwork");
 const container = document.querySelector(".artwork-container");
 const content = document.querySelector(".content");
 
-/* Click artwork */
-
 artwork.addEventListener("click", () => {
 
 container.classList.add("hide");
@@ -637,6 +645,10 @@ setTimeout(() => {
   document.getElementById("portal").addEventListener("click", () => {
   window.location.href = "consummation.html";
 });  
+
+setTimeout(() => {
+    document.getElementById("hole").classList.add("visible");
+}, 1000);
   
 </script>
   
