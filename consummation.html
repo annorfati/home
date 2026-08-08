@@ -227,6 +227,26 @@ footer {
 
 }
 
+.tap-to-load {
+  text-align: center;
+  margin-top: -45px;
+  margin-bottom: 55px;
+
+  color: #E8CFCF;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 1.5s ease;
+}
+
+.tap-to-load.visible {
+  opacity: 0.55;
+  pointer-events: auto;
+}
+  
 .poem-title {
 
   text-align: center;
@@ -285,7 +305,6 @@ footer {
 
   }
 
-
   .poem {
 
     width: 100%;
@@ -295,8 +314,13 @@ footer {
     line-height: 1.7;
 
   }
-
-
+  
+  .tap-to-load {
+    margin-top: -30px;
+    margin-bottom: 40px;
+    font-size: 9px;
+  }
+  
   .poem-title {
 
     margin-bottom: 50px;
@@ -383,7 +407,10 @@ footer {
     The Consummation
   </div>
 
-
+ <div class="tap-to-load">
+    tap to fully load
+  </div>
+  
   <p>
     <span class="fragment">
       loin and merlot<br>
@@ -457,6 +484,7 @@ footer {
 
 const welcome = document.querySelector(".welcome");
 const poem = document.querySelector(".poem");
+const tapPrompt = document.querySelector(".tap-to-load");
 
 const horsFragments =
   document.querySelectorAll(".hors-doeuvres .fragment");
@@ -464,10 +492,8 @@ const horsFragments =
 const poemFragments =
   document.querySelectorAll(".poem .fragment");
 
-
 let poemLoading = false;
 let poemFinished = false;
-
 
 horsFragments.forEach((fragment, index) => {
 
@@ -489,23 +515,32 @@ welcome.addEventListener("click", (event) => {
 
   poemLoading = true;
 
+  setTimeout(() => {
+
+    if (!poemFinished) {
+      tapPrompt.classList.add("visible");
+    }
+
+  }, 1200);
 
   poemFragments.forEach((fragment, index) => {
 
     setTimeout(() => {
 
       if (!poemFinished) {
+
         fragment.style.opacity = "1";
         fragment.style.transform = "translate(0, 0)";
+
       }
 
     }, 500 + index * 700);
 
   });
 
-
   const totalRevealTime =
     500 + (poemFragments.length - 1) * 700 + 4000;
+
 
   setTimeout(() => {
 
@@ -514,14 +549,17 @@ welcome.addEventListener("click", (event) => {
       poemFinished = true;
       poemLoading = false;
 
+      tapPrompt.classList.remove("visible");
+
     }
 
   }, totalRevealTime);
 
 });
 
+tapPrompt.addEventListener("click", (event) => {
 
-document.addEventListener("click", () => {
+  event.stopPropagation();
 
   if (!poemLoading || poemFinished) return;
 
@@ -535,6 +573,8 @@ document.addEventListener("click", () => {
 
   poemFinished = true;
   poemLoading = false;
+
+  tapPrompt.classList.remove("visible");
 
 });
 
