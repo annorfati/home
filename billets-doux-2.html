@@ -72,16 +72,16 @@ h1 {
 
 #portal {
   cursor: pointer;
-  transition: opacity 3s ease, transform 3s ease;
+  transition: color 3s ease;
 }
 
 #portal.hole {
   color: transparent;
-  transition: color 3s ease;
 }
 
 #portal.hole::after {
   content: "𖠂";
+  color: #9B8DA0;
   font-size: 18px;
   display: inline-block;
 
@@ -105,18 +105,9 @@ h1 {
   }
 
 }
-  
-#hole {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 2.5s ease;
-}
 
-#hole.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
 @keyframes holePulse {
+
   0%, 100% {
     transform: scale(1);
     opacity: 0.65;
@@ -126,7 +117,6 @@ h1 {
     transform: scale(1.08);
     opacity: 1;
   }
-}
   
 .heart {
   display: inline-block;
@@ -694,10 +684,6 @@ setTimeout(() => {
   document.getElementById("portal").addEventListener("click", () => {
   window.location.href = "consummation.html";
 });  
-
-setTimeout(() => {
-    document.getElementById("hole").classList.add("visible");
-}, 1500);
   
 </script>
   
