@@ -71,6 +71,8 @@ h1 {
 }
 
 #portal {
+  position: relative;
+  display: inline-block;
   cursor: pointer;
   transition: color 3s ease;
 }
@@ -81,12 +83,17 @@ h1 {
 
 #portal.hole::after {
   content: "𖠂";
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%) scale(0.5);
+
   color: #9B8DA0;
 
   font-size: inherit;
   letter-spacing: inherit;
-
-  display: inline-block;
 
   opacity: 0;
 
@@ -99,12 +106,12 @@ h1 {
 
   from {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translate(-50%, -50%) scale(0.5);
   }
 
   to {
     opacity: 0.75;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
 }
