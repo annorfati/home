@@ -91,7 +91,7 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.5s ease;
+  animation: blink 0.4s ease;
 }
 
 @keyframes blink {
@@ -210,7 +210,7 @@ body {
 
   pointer-events: none;
 
-  transition: opacity 4s ease;
+  transition: opacity 6s ease;
 
   z-index: 90;
 }
@@ -251,7 +251,7 @@ body {
 
 
 .preface-title.show {
-  animation: fadeIn 4s ease forwards;
+  animation: fadeIn 6s ease forwards;
 }
 
 
@@ -259,7 +259,7 @@ body {
 
   opacity: 0;
 
-  transition: opacity 2s ease;
+  transition: opacity 2.5s ease;
 
 }
 
@@ -375,6 +375,21 @@ body {
 
   display: block;
 
+}
+
+.work-images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-images img {
+  display: none;
+}
+
+.work-images img.active-image {
+  display: block;
 }
 
 .work-label {
@@ -697,64 +712,60 @@ body {
   <div class="work">
 
     <div class="work-label">
-      1 — A Birthday Surprise
+      01 — A Birthday Surprise
     </div>
 
-    <img
-      src="a birthday surprise p1.jpeg"
-      alt="A Birthday Surprise">
+    <div class="work-images">
 
-  </div>
+      <img
+        src="a birthday-surprise p1.jpeg"
+        alt="A Birthday Surprise — page 1">
 
-    <div class="work">
+      <img
+        src="a birthday-surprise p2.jpeg"
+        alt="A Birthday Surprise — page 2">
 
-    <div class="work-label">
-      1 — A Birthday Surprise
     </div>
-
-    <img
-      src="a birthday surprise p2.jpeg"
-      alt="A Birthday Surprise">
-
-  </div>
-  
-  <div class="work">
-
-    <div class="work-label">
-      2 — Mirror by Sylvia Plath
-    </div>
-
-    <img
-      src="Mirror by Sylvia Plath.jpeg"
-      alt="Mirror by Sylvia Plath">
 
   </div>
 
   <div class="work">
 
     <div class="work-label">
-      3 — Day in the Life
+      02 — Mirror by Sylvia Plath
     </div>
 
-    <img
-      src="day in the life egg.jpeg"
-      alt="Day in the Life">
+    <div class="work-images">
+
+      <img
+        src="Mirror by Sylvie Plath.jpeg"
+        alt="Mirror by Sylvia Plath">
+
+    </div>
 
   </div>
+
 
   <div class="work">
 
     <div class="work-label">
-      3 — Day in the Life
+      03 — Day in the Life
     </div>
 
-    <img
-      src="day in the life no egg.jpeg"
-      alt="Day in the Life">
+    <div class="work-images">
+
+      <img
+        src="day in the life egg.jpeg"
+        alt="Day in the Life — page 1">
+
+      <img
+        src="day in the life no egg.jpeg"
+        alt="Day in the Life — page 2">
+
+    </div>
 
   </div>
 
-  
 </div>
 
 <button id="prev" class="nav-arrow">
@@ -793,9 +804,9 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 700);
+  }, 500);
 
-}, 2000);
+}, 1800);
 
 
 setTimeout(() => {
@@ -806,9 +817,9 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 700);
+  }, 500);
 
-}, 3200);
+}, 3000);
 
 setTimeout(() => {
 
@@ -824,7 +835,7 @@ setTimeout(() => {
 
       fragment.classList.add("visible");
 
-    }, 1000 + index * 900);
+    }, 2500 + index * 1000);
 
   });
 
@@ -855,10 +866,42 @@ const next =
   document.getElementById("next");
 
 
-let currentWork = -1;
+let currentWork = 0;
+let currentImage = 0;
 
-previous.style.display = "none";
-next.style.display = "none";
+function getCurrentImages() {
+
+  return works[currentWork].querySelectorAll(".work-images img");
+
+}
+
+function showCurrent() {
+
+  works.forEach((work, index) => {
+
+    work.classList.toggle(
+      "active",
+      index === currentWork
+    );
+
+  });
+
+
+  const images = getCurrentImages();
+
+  images.forEach((image, index) => {
+
+    image.classList.toggle(
+      "active-image",
+      index === currentImage
+    );
+
+  });
+
+
+  updateNavigation();
+
+}
 
 startArrow.addEventListener("click", () => {
 
@@ -867,8 +910,9 @@ startArrow.addEventListener("click", () => {
   collection.classList.add("show");
 
   currentWork = 0;
+  currentImage = 0;
 
-  showWork(currentWork);
+  showCurrent();
 
   setTimeout(() => {
 
@@ -880,6 +924,103 @@ startArrow.addEventListener("click", () => {
   }, 2000);
 
 });
+
+previous.addEventListener("click", () => {
+
+  const images = getCurrentImages();
+
+  if (currentImage > 0) {
+
+    currentImage--;
+
+    showCurrent();
+
+    return;
+
+  }
+
+  if (currentWork > 0) {
+
+    currentWork--;
+
+    const previousImages = getCurrentImages();
+
+    currentImage = previousImages.length - 1;
+
+    showCurrent();
+
+  }
+
+});
+
+next.addEventListener("click", () => {
+
+  const images = getCurrentImages();
+
+  if (currentImage < images.length - 1) {
+
+    currentImage++;
+
+    showCurrent();
+
+    return;
+
+  }
+
+  if (currentWork < works.length - 1) {
+
+    currentWork++;
+
+    currentImage = 0;
+
+    showCurrent();
+
+  }
+
+});
+
+function updateNavigation() {
+
+  if (
+    currentWork === 0 &&
+    currentImage === 0
+  ) {
+
+    previous.style.opacity = "0";
+    previous.style.pointerEvents = "none";
+
+  } else {
+
+    previous.style.opacity = "0.5";
+    previous.style.pointerEvents = "auto";
+
+  }
+
+  const lastWork =
+    works.length - 1;
+
+  const lastImages =
+    works[lastWork].querySelectorAll(
+      ".work-images img"
+    );
+
+
+  if (
+    currentWork === lastWork &&
+    currentImage === lastImages.length - 1
+  ) {
+
+    next.style.opacity = "0";
+    next.style.pointerEvents = "none";
+
+  } else {
+
+    next.style.opacity = "0.5";
+    next.style.pointerEvents = "auto";
+
+  }
+
+}
 
 function showWork(index) {
 
