@@ -91,7 +91,7 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.5s ease;
+  animation: blink 0.35s ease;
 }
 
 @keyframes blink {
@@ -210,7 +210,7 @@ body {
 
   pointer-events: none;
 
-  transition: opacity 6s ease;
+  transition: opacity 2s ease;
 
   z-index: 90;
 }
@@ -805,7 +805,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 900);
+  }, 600);
 
 }, 1800);
 
@@ -818,7 +818,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 900);
+  }, 600);
 
 }, 3000);
 
@@ -852,7 +852,7 @@ setTimeout(() => {
 
   }, arrowDelay);
 
-}, 8500);
+}, 7500);
 
 const collection =
   document.getElementById("collection");
@@ -939,7 +939,7 @@ previous.addEventListener("click", () => {
 
       preface.classList.add("show");
 
-    }, 1000);
+    }, 2000);
 
     return;
   }
@@ -1002,8 +1002,8 @@ function updateNavigation() {
     currentImage === 0
   ) {
 
-    previous.style.opacity = "0";
-    previous.style.pointerEvents = "none";
+    previous.style.opacity = "0.5";
+    previous.style.pointerEvents = "auto";
 
   } else {
 
@@ -1011,7 +1011,7 @@ function updateNavigation() {
     previous.style.pointerEvents = "auto";
 
   }
-
+  
   const lastWork =
     works.length - 1;
 
