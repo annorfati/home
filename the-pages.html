@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+  background: #171C33;
+  color: #AEB6DB;
+  font-family: "Commit Mono", monospace;
+
+  margin: 0;
+  padding: 20px;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-x: hidden;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+
+  background: #AEB6DB;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+
+  transition: opacity 2s ease;
+}
+
+#intro.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.eyes {
+  display: flex;
+  gap: 55px;
+
+  margin-bottom: 55px;
+
+  opacity: 0;
+
+  animation:
+    eyesAppear 1.5s ease forwards,
+    eyesFade 1.5s ease 3s forwards;
+}
+
+.eye {
+  position: relative;
+
+  width: 38px;
+  height: 20px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+  
+.eye::after {
+  content: "";
+
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  background: #171C33;
+
+  border-radius: 50%;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.eyes.blink .eye {
+  animation: blink 0.35s ease;
+}
+
+@keyframes blink {
+
+  0%, 100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.08);
+  }
+
+}
+
+@keyframes eyesAppear {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+@keyframes eyesFade {
+
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+
+}
+
+.intro-title {
+
+  position: absolute;
+
+  text-align: center;
+
+  opacity: 0;
+
+  font-size: 24px;
+
+  letter-spacing: 7px;
+
+  animation: titleAppear 2s ease 4.5s forwards;
+}
+
+.intro-subtitle {
+
+  position: absolute;
+
+  margin-top: 100px;
+
+  opacity: 0;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  animation: subtitleAppear 2s ease 6s forwards;
+}
+
+
+@keyframes titleAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes subtitleAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+#preface {
+  position: fixed;
+
+  inset: 0;
+
+  background: #171C33;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 2s ease;
+
+  z-index: 90;
+}
+
+#preface.show {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+.preface-inner {
+
+  width: min(600px, 85vw);
+
+  text-align: left;
+
+  line-height: 1.8;
+
+  font-size: 15px;
+
+}
+
+
+.preface-title {
+
+  text-align: center;
+
+  margin-bottom: 60px;
+
+  font-size: 13px;
+
+  letter-spacing: 3px;
+
+  opacity: 0;
+
+}
+
+
+.preface-title.show {
+  animation: fadeIn 2s ease forwards;
+}
+
+
+.preface .fragment {
+
+  opacity: 0;
+
+  transition: opacity 2s ease;
+
+}
+
+
+.preface .fragment.visible {
+  opacity: 1;
+}
+
+#start-arrow {
+
+  position: fixed;
+
+  right: 50px;
+  bottom: 45px;
+
+  background: none;
+  border: none;
+
+  color: #EDEFF7;
+
+  font-family: "Commit Mono", monospace;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 1.5s ease,
+    transform 0.3s ease;
+}
+
+#start-arrow.visible {
+
+  opacity: 0.6;
+
+  pointer-events: auto;
+
+}
+
+#start-arrow:hover {
+
+  opacity: 1;
+
+  transform: translateX(5px);
+
+}
+
+#collection {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 2s ease;
+}
+
+#collection.show {
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+}
+
+
+.work {
+
+  width: 100%;
+
+  max-width: 1100px;
+
+  min-height: 85vh;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 2s ease;
+
+}
+
+.work.active {
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+}
+
+.work img {
+
+  max-width: 85vw;
+
+  max-height: 78vh;
+
+  width: auto;
+
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+
+}
+
+.work-label {
+
+  position: absolute;
+
+  top: 15px;
+  left: 20px;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  color: #EDEFF7;
+
+  opacity: 0;
+
+  transform: translateY(-5px);
+
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s ease;
+}
+
+.work.active .work-label {
+
+  opacity: 0.65;
+
+  transform: translateY(0);
+
+}
+
+.nav-arrow {
+
+  position: fixed;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background: none;
+
+  border: none;
+
+  color: #EDEFF7;
+
+  font-family: "Commit Mono", monospace;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  opacity: 0.5;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  z-index: 20;
+}
+
+
+.nav-arrow:hover {
+
+  opacity: 1;
+
+}
+
+
+#prev {
+
+  left: 35px;
+
+}
+
+
+#next {
+
+  right: 35px;
+
+}
+
+
+#prev:hover {
+
+  transform:
+    translate(-5px, -50%);
+
+}
+
+
+#next:hover {
+
+  transform:
+    translate(5px, -50%);
+
+}
+
+@media (max-width: 600px) {
+
+  body {
+
+    padding: 12px;
+
+  }
+
+
+  .eyes {
+
+    gap: 35px;
+
+  }
+
+
+  .eye {
+
+    width: 30px;
+
+    height: 16px;
+
+  }
+
+
+  .intro-title {
+
+    font-size: 18px;
+
+    letter-spacing: 5px;
+
+  }
+
+
+  .intro-subtitle {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+  }
+
+
+  .preface-inner {
+
+    width: 85vw;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+  }
+
+
+  #start-arrow {
+
+    right: 25px;
+
+    bottom: 25px;
+
+  }
+
+
+  .work {
+
+    min-height: 90vh;
+
+  }
+
+
+  .work img {
+
+    max-width: 90vw;
+
+    max-height: 78vh;
+
+  }
+
+
+  .work-label {
+
+    top: 10px;
+
+    left: 5px;
+
+    font-size: 10px;
+
+  }
+
+
+  .nav-arrow {
+
+    font-size: 20px;
+
+  }
+
+
+  #prev {
+
+    left: 12px;
+
+  }
+
+
+  #next {
+
+    right: 12px;
+
+  }
+
+}
+  
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div id="intro">
+
+  <div class="eyes" id="eyes">
+
+    <div class="eye"></div>
+
+    <div class="eye"></div>
+
+  </div>
+
+
+  <div class="intro-title">
+    THE PAGES.
+  </div>
+
+<div id="preface">
+
+  <div class="preface-inner">
+
+    <div class="preface-title">
+      Preface
+    </div>
+
+    <p>
+      <span class="fragment">
+        In my nightgarden 
+      </span>
+      <span class="fragment">
+        there are no skies, no birds,<br>
+        no butterflies, no chirping or humming.
+      </span>
+    </p>
+
+    <p>
+      <span class="fragment">
+        only nettles<br>
+        huge, towering nettles.
+      </span>
+      <span class="fragment">
+        they are black, i think.
+      </span>
+    </p>
+
+    <p>
+      <span class="fragment">
+        like totems, leviathans, angels of the night
+      </span>
+    </p>
+
+     <p>
+      <span class="fragment">
+        like totems, leviathans, angels of the night
+      </span>
+      <span class="fragment">
+        ivy, inky, and enthralling<br>
+        burning deeply in my mind
+      </span>
+    </p>
+
+     <p>
+      <span class="fragment">
+        from the fat of my tissue
+      </span>
+      <span class="fragment">
+        whitby jet ribbons unfurling and curling<br>
+        like inchworms writhing and squirming 
+      </span>
+      <span class="fragment">
+         fuller, pump, plumper every day<br>
+         sick and sweet in my image.
+      </span>
+    </p>
+
+    <p>
+      <span class="fragment">
+        26th august 2026.
+      </span>
+    </p>
+
+  </div>
+
+
+  <button id="start-arrow">
+    →
+  </button>
+
+</div>
+
+<div id="collection">
+
+  <div class="work">
+
+    <div class="work-label">
+      1 — A Birthday Surprise
+    </div>
+
+    <img
+      src="birthday-surprise.jpg"
+      alt="A Birthday Surprise">
+
+  </div>
+
+  <div class="work">
+
+    <div class="work-label">
+      2 — Mirror by Sylvia Plath
+    </div>
+
+    <img
+      src="mirror.jpg"
+      alt="Mirror">
+
+  </div>
+
+  <div class="work">
+
+    <div class="work-label">
+      3 — Day in the Life
+    </div>
+
+    <img
+      src="day-in-the-life.jpg"
+      alt="Day in the Life">
+
+  </div>
+
+
+</div>
+
+<button id="prev" class="nav-arrow">
+  ←
+</button>
+
+<button id="next" class="nav-arrow">
+  →
+</button>
+
+<script>
+
+const intro =
+  document.getElementById("intro");
+
+const eyes =
+  document.getElementById("eyes");
+
+const preface =
+  document.getElementById("preface");
+
+const prefaceTitle =
+  document.querySelector(".preface-title");
+
+const prefaceFragments =
+  document.querySelectorAll(".preface .fragment");
+
+const startArrow =
+  document.getElementById("start-arrow");
+
+setTimeout(() => {
+
+  eyes.classList.add("blink");
+
+  setTimeout(() => {
+
+    eyes.classList.remove("blink");
+
+  }, 400);
+
+}, 1800);
+
+
+setTimeout(() => {
+
+  eyes.classList.add("blink");
+
+  setTimeout(() => {
+
+    eyes.classList.remove("blink");
+
+  }, 400);
+
+}, 2700);
+
+setTimeout(() => {
+
+  intro.classList.add("hide");
+
+  preface.classList.add("show");
+
+  prefaceTitle.classList.add("show");
+
+  prefaceFragments.forEach((fragment, index) => {
+
+    setTimeout(() => {
+
+      fragment.classList.add("visible");
+
+    }, 1000 + index * 900);
+
+  });
+
+  const arrowDelay =
+    1000 +
+    prefaceFragments.length * 900 +
+    1500;
+
+
+  setTimeout(() => {
+
+    startArrow.classList.add("visible");
+
+  }, arrowDelay);
+
+}, 6500);
+
+const collection =
+  document.getElementById("collection");
+
+const works =
+  Array.from(document.querySelectorAll(".work"));
+
+const previous =
+  document.getElementById("prev");
+
+const next =
+  document.getElementById("next");
+
+
+let currentWork = -1;
+
+previous.style.display = "none";
+next.style.display = "none";
+
+startArrow.addEventListener("click", () => {
+
+  preface.classList.remove("show");
+
+  collection.classList.add("show");
+
+  currentWork = 0;
+
+  showWork(currentWork);
+
+  setTimeout(() => {
+
+    previous.style.display = "block";
+    next.style.display = "block";
+
+    updateNavigation();
+
+  }, 2000);
+
+});
+
+function showWork(index) {
+
+  works.forEach((work, i) => {
+
+    work.classList.toggle(
+      "active",
+      i === index
+    );
+
+  });
+
+  updateNavigation();
+
+}
+
+previous.addEventListener("click", () => {
+
+  if (currentWork <= 0) return;
+
+  currentWork--;
+
+  showWork(currentWork);
+
+});
+
+
+next.addEventListener("click", () => {
+
+  if (currentWork >= works.length - 1) return;
+
+  currentWork++;
+
+  showWork(currentWork);
+
+});
+
+function updateNavigation() {
+
+  if (currentWork <= 0) {
+
+    previous.style.opacity = "0.2";
+    previous.style.pointerEvents = "none";
+
+  } else {
+
+    previous.style.opacity = "0.5";
+    previous.style.pointerEvents = "auto";
+
+  }
+
+
+  if (currentWork >= works.length - 1) {
+
+    next.style.opacity = "0";
+    next.style.pointerEvents = "none";
+
+  } else {
+
+    next.style.opacity = "0.5";
+    next.style.pointerEvents = "auto";
+
+  }
+
+}
+
+
+</script>
+
+</body>
+</html>
