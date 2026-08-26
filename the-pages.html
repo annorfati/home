@@ -91,7 +91,7 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.4s ease;
+  animation: blink 0.5s ease;
 }
 
 @keyframes blink {
@@ -443,7 +443,8 @@ body {
 
   cursor: pointer;
 
-  opacity: 0.5;
+  opacity: 0;
+  pointer-events: none;
 
   transition:
     opacity 0.3s ease,
@@ -462,14 +463,14 @@ body {
 
 #prev {
 
-  left: 35px;
+  left: 30px;
 
 }
 
 
 #next {
 
-  right: 35px;
+  right: 30px;
 
 }
 
@@ -585,14 +586,14 @@ body {
 
   #prev {
 
-    left: 12px;
+    left: 15px;
 
   }
 
 
   #next {
 
-    right: 12px;
+    right: 15px;
 
   }
 
@@ -718,11 +719,11 @@ body {
     <div class="work-images">
 
       <img
-        src="a birthday-surprise p1.jpeg"
+        src="a birthday surprise p1.jpeg"
         alt="A Birthday Surprise — page 1">
 
       <img
-        src="a birthday-surprise p2.jpeg"
+        src="a birthday surprise p2.jpeg"
         alt="A Birthday Surprise — page 2">
 
     </div>
@@ -738,7 +739,7 @@ body {
     <div class="work-images">
 
       <img
-        src="Mirror by Sylvie Plath.jpeg"
+        src="Mirror by Sylvia Plath.jpeg"
         alt="Mirror by Sylvia Plath">
 
     </div>
@@ -804,7 +805,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 500);
+  }, 900);
 
 }, 1800);
 
@@ -817,7 +818,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 500);
+  }, 900);
 
 }, 3000);
 
@@ -916,9 +917,6 @@ startArrow.addEventListener("click", () => {
 
   setTimeout(() => {
 
-    previous.style.display = "block";
-    next.style.display = "block";
-
     updateNavigation();
 
   }, 2000);
@@ -926,6 +924,25 @@ startArrow.addEventListener("click", () => {
 });
 
 previous.addEventListener("click", () => {
+
+  if (currentWork === 0 && currentImage === 0) {
+
+    collection.classList.remove("show");
+
+    previous.style.opacity = "0";
+    next.style.opacity = "0";
+
+    previous.style.pointerEvents = "none";
+    next.style.pointerEvents = "none";
+
+    setTimeout(() => {
+
+      preface.classList.add("show");
+
+    }, 1000);
+
+    return;
+  }
 
   const images = getCurrentImages();
 
@@ -936,7 +953,6 @@ previous.addEventListener("click", () => {
     showCurrent();
 
     return;
-
   }
 
   if (currentWork > 0) {
@@ -1036,57 +1052,6 @@ function showWork(index) {
   updateNavigation();
 
 }
-
-previous.addEventListener("click", () => {
-
-  if (currentWork <= 0) return;
-
-  currentWork--;
-
-  showWork(currentWork);
-
-});
-
-
-next.addEventListener("click", () => {
-
-  if (currentWork >= works.length - 1) return;
-
-  currentWork++;
-
-  showWork(currentWork);
-
-});
-
-function updateNavigation() {
-
-  if (currentWork <= 0) {
-
-    previous.style.opacity = "0.2";
-    previous.style.pointerEvents = "none";
-
-  } else {
-
-    previous.style.opacity = "0.5";
-    previous.style.pointerEvents = "auto";
-
-  }
-
-
-  if (currentWork >= works.length - 1) {
-
-    next.style.opacity = "0";
-    next.style.pointerEvents = "none";
-
-  } else {
-
-    next.style.opacity = "0.5";
-    next.style.pointerEvents = "auto";
-
-  }
-
-}
-
 
 </script>
 
