@@ -55,7 +55,7 @@ body {
   opacity: 0;
 
   animation:
-    eyesAppear 1.5s ease forwards,
+    eyesAppear 0.8s ease forwards,
     eyesFade 1.5s ease 4.5s forwards;
 }
 
@@ -259,7 +259,7 @@ body {
 
   opacity: 0;
 
-  transition: opacity 2.5s ease;
+  transition: opacity 2s ease;
 
 }
 
@@ -799,9 +799,9 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 600);
+  }, 500);
 
-}, 1800);
+}, 1000);
 
 
 setTimeout(() => {
@@ -812,9 +812,9 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 600);
+  }, 500);
 
-}, 3000);
+}, 2000);
 
 setTimeout(() => {
 
@@ -830,13 +830,13 @@ setTimeout(() => {
 
       fragment.classList.add("visible");
 
-    }, 2500 + index * 1000);
+    }, 2500 + index * 2500);
 
   });
 
   const arrowDelay =
     1000 +
-    prefaceFragments.length * 900 +
+    prefaceFragments.length * 2500 +
     1500;
 
 
