@@ -91,9 +91,9 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.25s ease;
+  animation: blink 0.4s ease-in-out;
 }
-
+  
 @keyframes blink {
 
   0%, 100% {
@@ -256,24 +256,26 @@ body {
 
 
 .preface .fragment {
-
   display: block;
-
   opacity: 0;
-
   transform: translateY(8px);
-
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease;
-
 }
 
 .preface .fragment.visible {
+  animation: fragmentAppear 2s ease forwards;
+}
 
-  opacity: 1;
+@keyframes fragmentAppear {
 
-  transform: translateY(0);
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 }
   
@@ -816,29 +818,23 @@ const startArrow =
   document.getElementById("start-arrow");
 
 setTimeout(() => {
-
   eyes.classList.add("blink");
 
   setTimeout(() => {
-
     eyes.classList.remove("blink");
-
-  }, 300);
+  }, 400);
 
 }, 1000);
 
 
 setTimeout(() => {
-
   eyes.classList.add("blink");
 
   setTimeout(() => {
-
     eyes.classList.remove("blink");
+  }, 400);
 
-  }, 300);
-
-}, 2000);
+}, 1900);
 
 setTimeout(() => {
 
@@ -854,14 +850,14 @@ setTimeout(() => {
 
       fragment.classList.add("visible");
 
-    }, 2500 + index * 2000);
+    }, 2500 + index * 3000);
 
   });
 
   const arrowDelay =
-    1000 +
-    prefaceFragments.length * 2500 +
-    1500;
+    2500 +
+    prefaceFragments.length * 3000 +
+    2500;
 
 
   setTimeout(() => {
