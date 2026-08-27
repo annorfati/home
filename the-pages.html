@@ -105,25 +105,17 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.35s ease-in-out;
+  animation: blink 0.5s ease-in-out;
 }
 
 @keyframes blink {
 
-  0% {
+  0%, 100% {
     transform: scaleY(1);
   }
 
-  45% {
-    transform: scaleY(0.15);
-  }
-
-  55% {
-    transform: scaleY(0.15);
-  }
-
-  100% {
-    transform: scaleY(1);
+  50% {
+    transform: scaleY(0.08);
   }
 
 }
@@ -856,7 +848,7 @@ setTimeout(() => {
   }, 3500 + index * 2500);
 
 });
-
+  
   const arrowDelay =
   3500 +
   (prefaceFragments.length - 1) * 2500 +
