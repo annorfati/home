@@ -847,19 +847,19 @@ setTimeout(() => {
   prefaceTitle.classList.add("show");
   
 
-  prefaceFragments.forEach((fragment, index) => {
+ prefaceFragments.forEach((fragment, index) => {
 
   setTimeout(() => {
 
     fragment.classList.add("visible");
 
-  3500 + index * 2500
+  }, 3500 + index * 2500);
 
 });
 
   const arrowDelay =
   3500 +
-  (prefaceFragments.length - 1) * 3000 +
+  (prefaceFragments.length - 1) * 2500 +
   2500;
 
   setTimeout(() => {
