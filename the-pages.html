@@ -257,15 +257,15 @@ body {
 
 .preface .fragment {
 
+  display: block;
+
   opacity: 0;
 
-  display: inline-block;
-
-  transform: translateY(6px);
+  transform: translateY(8px);
 
   transition:
-    opacity 1.5s ease,
-    transform 1.5s ease;
+    opacity 1.2s ease,
+    transform 1.2s ease;
 
 }
 
@@ -276,7 +276,7 @@ body {
   transform: translateY(0);
 
 }
-
+  
 #start-arrow {
 
   position: fixed;
@@ -808,7 +808,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 500);
+  }, 300);
 
 }, 1000);
 
@@ -821,7 +821,7 @@ setTimeout(() => {
 
     eyes.classList.remove("blink");
 
-  }, 500);
+  }, 300);
 
 }, 2000);
 
