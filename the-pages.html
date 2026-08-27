@@ -91,7 +91,7 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.4s ease-in-out;
+  animation: blink 0.3s ease-in-out;
 }
   
 @keyframes blink {
@@ -256,9 +256,7 @@ body {
 
 
 .preface .fragment {
-  display: block;
   opacity: 0;
-  transform: translateY(8px);
 }
 
 .preface .fragment.visible {
@@ -269,7 +267,7 @@ body {
 
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(5px);
   }
 
   to {
@@ -373,19 +371,14 @@ body {
 }
 
 .work img {
-
-  max-width: 85vw;
-
-  max-height: 78vh;
+  max-width: 75vw;
+  max-height: 68vh;
 
   width: auto;
-
   height: auto;
 
   object-fit: contain;
-
   display: block;
-
 }
 
 .work-images {
@@ -822,7 +815,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     eyes.classList.remove("blink");
-  }, 400);
+  }, 300);
 
 }, 1000);
 
@@ -832,7 +825,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     eyes.classList.remove("blink");
-  }, 400);
+  }, 300);
 
 }, 1900);
 
@@ -850,13 +843,13 @@ setTimeout(() => {
 
       fragment.classList.add("visible");
 
-    }, 2500 + index * 3000);
+    }, 1500 + index * 2200);
 
   });
 
   const arrowDelay =
-    2500 +
-    prefaceFragments.length * 3000 +
+    1500 +
+    prefaceFragments.length * 2200 +
     2500;
 
 
