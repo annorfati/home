@@ -91,19 +91,8 @@ body {
 }
 
 .eyes.blink .eye {
-  animation: blink 0.3s ease-in-out;
-}
-  
-@keyframes blink {
-
-  0%, 100% {
-    transform: scaleY(1);
-  }
-
-  50% {
-    transform: scaleY(0.08);
-  }
-
+  transform: scaleY(0.08);
+  transition: transform 0.12s ease-in;
 }
 
 @keyframes eyesAppear {
@@ -254,27 +243,12 @@ body {
   animation: fadeIn 2.5s ease forwards;
 }
 
-
 .preface .fragment {
   opacity: 0;
-}
-
-.preface .fragment.visible {
-  animation: fragmentAppear 2s ease forwards;
-}
-
-@keyframes fragmentAppear {
-
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s ease;
+  transform: translateY(5px);
 }
   
 #start-arrow {
@@ -810,24 +784,20 @@ const prefaceFragments =
 const startArrow =
   document.getElementById("start-arrow");
 
-setTimeout(() => {
+function blinkEyes() {
+
   eyes.classList.add("blink");
 
   setTimeout(() => {
     eyes.classList.remove("blink");
-  }, 300);
+  }, 180);
 
-}, 1000);
+}
 
+setTimeout(blinkEyes, 900);
 
-setTimeout(() => {
-  eyes.classList.add("blink");
-
-  setTimeout(() => {
-    eyes.classList.remove("blink");
-  }, 300);
-
-}, 1900);
+setTimeout(blinkEyes, 1800);
+  
 
 setTimeout(() => {
 
@@ -836,22 +806,23 @@ setTimeout(() => {
   preface.classList.add("show");
 
   prefaceTitle.classList.add("show");
+  
 
   prefaceFragments.forEach((fragment, index) => {
 
-    setTimeout(() => {
+  setTimeout(() => {
 
-      fragment.classList.add("visible");
+    fragment.style.opacity = "1";
+    fragment.style.transform = "translateY(0)";
 
-    }, 1500 + index * 2200);
+  }, 1800 + index * 2800);
 
-  });
+});
 
   const arrowDelay =
-    1500 +
-    prefaceFragments.length * 2200 +
-    2500;
-
+  1800 +
+  (prefaceFragments.length - 1) * 2800 +
+  2500;
 
   setTimeout(() => {
 
