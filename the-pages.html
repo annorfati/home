@@ -56,7 +56,7 @@ body {
 
   animation:
     eyesAppear 0.8s ease forwards,
-    eyesFade 1.5s ease 4.5s forwards;
+    eyesFade 1.5s ease 3.5s forwards;
 }
 
 .eye {
@@ -88,10 +88,24 @@ body {
   top: 50%;
 
   transform: translate(-50%, -50%);
+
+  animation: eyesLookForward 1.2s ease 0.3s forwards;
+}
+
+@keyframes eyesLookForward {
+
+  from {
+    transform: translate(-50%, -75%);
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+  }
+
 }
 
 .eyes.blink .eye {
-  animation: blink 0.45s ease-in-out;
+  animation: blink 0.35s ease-in-out;
 }
 
 @keyframes blink {
@@ -265,15 +279,15 @@ body {
 .preface .fragment {
   opacity: 0;
   transform: translateY(8px);
+
+  transition:
+    opacity 2s ease,
+    transform 2s ease;
 }
 
 .preface .fragment.visible {
   opacity: 1;
   transform: translateY(0);
-
-  transition:
-    opacity 2s ease,
-    transform 2s ease;
 }
   
 #start-arrow {
@@ -839,7 +853,7 @@ setTimeout(() => {
 
     fragment.classList.add("visible");
 
-  }, 3500 + index * 3000);
+  3500 + index * 2500
 
 });
 
