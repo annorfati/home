@@ -176,6 +176,60 @@ h1 {
     animation-delay: 20s;
 }
 
+.bottom-navigation {
+
+  position: fixed;
+
+  left: 50%;
+  bottom: 40px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  z-index: 20;
+
+}
+
+
+.back-link {
+
+  color: #CBBEBE;
+
+  text-decoration: none;
+
+  letter-spacing: 3px;
+
+  font-size: 13px;
+
+  opacity: 0.6;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+}
+
+
+.back-link:hover {
+
+  opacity: 1;
+
+  transform: translateX(-4px);
+
+}
+
+
+.bottom-navigation .home-link {
+
+  margin-top: 0;
+
+}
+  
 .home-link {
 
   display: inline-block;
@@ -248,10 +302,25 @@ img {
     line-height: 1.7;
   }
 
-  .home-link {
-    margin-top: 40px;
-    font-size: 13px;
-  }
+ .bottom-navigation {
+
+  bottom: 40px;
+
+  gap: 25px;
+
+}
+
+.back-link {
+
+  font-size: 12px;
+
+}
+
+.bottom-navigation .home-link {
+
+  font-size: 13px;
+
+}
 
   footer {
     margin-top: 60px;
@@ -310,9 +379,17 @@ img {
   
 </div>
 
-<a class="home-link" href="index.html">
-  home
-</a>
+<div class="bottom-navigation">
+
+  <a class="back-link" href="bd-contents.html">
+    ← contents
+  </a>
+
+  <a class="home-link" href="index.html">
+    home
+  </a>
+
+</div>
 
 <a class="secret-link" href="nocturnal-snowstorm.html">
   <span class="highlight glow">❆</span></a>
