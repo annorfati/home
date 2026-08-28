@@ -181,7 +181,16 @@ h1{
     opacity:.7;
 
 }
+    
+.locked-entry:active {
+    opacity:.7;
+}
 
+.locked-entry:active .lock {
+    opacity:1;
+    transform:translateX(3px);
+}
+    
 .entry-row{
 
     display:flex;
@@ -286,7 +295,7 @@ h1{
 
 .locked-entry {
 
-    cursor: default;
+    cursor: pointer;
 
     opacity: 0;
 
@@ -304,9 +313,7 @@ h1{
 
 }
 
-
 .lock {
-
     display:inline-block;
 
     color:#8F7F7F;
@@ -315,11 +322,19 @@ h1{
 
     opacity:.6;
 
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
     animation:
         lockWiggle 3s ease-in-out infinite;
-
 }
 
+.locked-entry:hover .lock {
+    opacity:1;
+
+    transform:translateX(3px);
+}
 
 @keyframes lockWiggle {
 
@@ -673,8 +688,6 @@ footer{
 
    </a>
 
-</div>
-
         <div class="entry locked-entry">
             
             <div class="entry-row">
@@ -722,6 +735,8 @@ footer{
     </div>
         
     </div>
+
+</div>
 
 <div class="bottom-navigation">
 
