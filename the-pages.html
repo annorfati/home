@@ -746,19 +746,38 @@ footer {
   }
 
 
-  #prev {
-    left:50%;
-    transform:translateX(-55px);
-    top:auto;
-    bottom:65px;
-  }
+#prev,
+#next {
 
-  #next {
-    right:50%;
-    transform:translateX(55px);
-    top:auto;
-    bottom:65px;
-  }
+    position:fixed;
+
+    top:50px;
+
+    bottom:auto;
+
+    font-size:18px;
+
+    z-index:300;
+
+}
+
+#prev {
+
+    left:auto;
+
+    right:65px;
+
+    transform:none;
+
+}
+
+#next {
+
+    right:25px;
+
+    transform:none;
+
+}
   
   footer {
     bottom:3px;
