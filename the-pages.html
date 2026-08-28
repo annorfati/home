@@ -1109,14 +1109,11 @@ function changeImage(newImage) {
 
   const images = getCurrentImages();
 
-  const imageContainer =
-    works[currentWork].querySelector(".work-images");
-
   const currentImageElement =
     images[currentImage];
 
   currentImageElement.style.transition =
-    "opacity 0.35s ease";
+  "opacity 0.5s ease";
 
   currentImageElement.style.opacity = "0";
 
@@ -1143,15 +1140,15 @@ function changeImage(newImage) {
         images[currentImage];
 
       newImageElement.style.transition =
-        "opacity 0.6s ease";
+      "opacity 0.8s ease";
 
       newImageElement.style.opacity = "1";
 
-    }, 80);
+    }, 120);
 
     updateNavigation();
 
-  }, 350);
+  }, 500);
 
 }
   
