@@ -459,6 +459,34 @@ body {
 
 }
 
+.locked-work {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.locked-work .work-label {
+
+    color:#A28B8B;
+
+    opacity:.5;
+
+    transition:
+        opacity .35s ease;
+
+}
+
+
+.locked-work:hover .work-label {
+
+    opacity:.75;
+
+}
+  
 .nav-arrow {
 
   position: fixed;
@@ -963,7 +991,29 @@ footer {
 
   </div>
 
-</div>
+  <div class="work-label">
+
+    4 — Tyrian Lo
+
+    <span class="lock">
+        <span class="lock-inner">
+            🔒︎
+        </span>
+    </span>
+
+  </div>
+
+  <div class="work-label">
+
+    4 — Dialogue (Exeunt)
+
+    <span class="lock">
+        <span class="lock-inner">
+            🔒︎
+        </span>
+    </span>
+
+  </div>
 
 <button id="prev" class="nav-arrow">
   ←
@@ -1073,35 +1123,40 @@ let currentImage = 0;
 
 function getCurrentImages() {
 
-  return works[currentWork].querySelectorAll(".work-images img");
+    const imageContainer =
+        works[currentWork].querySelector(".work-images");
+
+    if (!imageContainer) {
+        return [];
+    }
+
+    return imageContainer.querySelectorAll("img");
 
 }
 
 function showCurrent() {
 
-  works.forEach((work, index) => {
+    works.forEach((work, index) => {
 
-    work.classList.toggle(
-      "active",
-      index === currentWork
-    );
+        work.classList.toggle(
+            "active",
+            index === currentWork
+        );
 
-  });
+    });
 
+    const images = getCurrentImages();
 
-  const images = getCurrentImages();
+    images.forEach((image, index) => {
 
-  images.forEach((image, index) => {
+        image.classList.toggle(
+            "active-image",
+            index === currentImage
+        );
 
-    image.classList.toggle(
-      "active-image",
-      index === currentImage
-    );
+    });
 
-  });
-
-
-  updateNavigation();
+    updateNavigation();
 
 }
 
@@ -1242,20 +1297,40 @@ next.addEventListener("click", () => {
 
 function updateNavigation() {
 
-  if (
-    currentWork === 0 &&
-    currentImage === 0
-  ) {
+    const images = getCurrentImages();
 
-    previous.style.opacity = "0.5";
-    previous.style.pointerEvents = "auto";
+    const isLocked =
+        works[currentWork].classList.contains("locked-work");
 
-  } else {
 
-    previous.style.opacity = "0.5";
-    previous.style.pointerEvents = "auto";
+    if (isLocked) {
 
-  }
+        prevBtn.style.display =
+            currentWork > 0 ? "block" : "none";
+
+        nextBtn.style.display =
+            currentWork < works.length - 1
+                ? "block"
+                : "none";
+
+        return;
+
+    }
+
+
+    prevBtn.style.display =
+        currentImage > 0 || currentWork > 0
+            ? "block"
+            : "none";
+
+
+    nextBtn.style.display =
+        currentImage < images.length - 1 ||
+        currentWork < works.length - 1
+            ? "block"
+            : "none";
+
+}
   
   const lastWork =
     works.length - 1;
