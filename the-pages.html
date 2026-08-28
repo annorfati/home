@@ -1297,16 +1297,21 @@ next.addEventListener("click", () => {
 
 function updateNavigation() {
 
-    const images = getCurrentImages();
+    const currentWorkElement =
+        works[currentWork];
 
     const isLocked =
-        works[currentWork].classList.contains("locked-work");
+        currentWorkElement.classList.contains("locked-work");
 
+    const images =
+        getCurrentImages();
 
     if (isLocked) {
 
         prevBtn.style.display =
-            currentWork > 0 ? "block" : "none";
+            currentWork > 0
+                ? "block"
+                : "none";
 
         nextBtn.style.display =
             currentWork < works.length - 1
@@ -1316,7 +1321,6 @@ function updateNavigation() {
         return;
 
     }
-
 
     prevBtn.style.display =
         currentImage > 0 || currentWork > 0
@@ -1329,32 +1333,6 @@ function updateNavigation() {
         currentWork < works.length - 1
             ? "block"
             : "none";
-
-}
-  
-  const lastWork =
-    works.length - 1;
-
-  const lastImages =
-    works[lastWork].querySelectorAll(
-      ".work-images img"
-    );
-
-
-  if (
-    currentWork === lastWork &&
-    currentImage === lastImages.length - 1
-  ) {
-
-    next.style.opacity = "0";
-    next.style.pointerEvents = "none";
-
-  } else {
-
-    next.style.opacity = "0.5";
-    next.style.pointerEvents = "auto";
-
-  }
 
 }
 
