@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+
+    background:#797FB4;
+
+    color:#D3D5E6;
+
+    font-family:Commit Mono, monospace;
+
+    margin:0;
+
+    padding:20px;
+
+    min-height:100vh;
+
+    box-sizing:border-box;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity:0;
+    }
+
+    to {
+        opacity:1;
+    }
+
+}
+
+.home-link {
+
+    align-self:center;
+
+    margin-top:20px;
+
+    color:#EFEFF6;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    font-size:14px;
+
+    opacity:.6;
+
+    transition:opacity .3s ease;
+
+}
+
+.home-link:hover {
+
+    opacity:1;
+
+}
+
+main {
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.collection-number {
+
+    color:#D3D5E6;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+
+    opacity:0;
+
+    animation:fadeIn 1.5s forwards;
+
+    animation-delay:.4s;
+
+}
+
+h1 {
+
+    margin:0;
+
+    color:#EFEFF6;
+
+    font-weight:100;
+
+    font-size:22px;
+
+    letter-spacing:6px;
+
+    opacity:0;
+
+    animation:fadeIn 2s forwards;
+
+    animation-delay:.8s;
+
+}
+
+
+.placeholder {
+
+    margin-top:45px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:18px;
+
+    opacity:0;
+
+    animation:fadeIn 1.8s forwards;
+
+    animation-delay:1.5s;
+
+}
+
+.symbol {
+
+    color:#B4B7D5;
+
+    font-size:18px;
+
+    opacity:.6;
+
+    animation:
+
+        breathe 4s ease-in-out infinite;
+
+}
+
+
+@keyframes breathe {
+
+    0%,100% {
+
+        opacity:.35;
+
+        transform:scale(1);
+
+    }
+
+    50% {
+
+        opacity:.8;
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+.status {
+
+    color:#D3D5E6;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+}
+
+
+.note {
+
+    max-width:400px;
+
+    margin-top:5px;
+
+    color:#B4B7D5;
+
+    font-size:10px;
+
+    line-height:1.8;
+
+    letter-spacing:1px;
+
+}
+
+.back-link {
+
+    display:inline-block;
+
+    margin-top:50px;
+
+    color:#EFEFF6;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    opacity:.6;
+
+    transition:
+
+        opacity .3s ease,
+
+        transform .3s ease;
+
+}
+
+.back-link:hover {
+
+    opacity:1;
+
+    transform:translateX(-4px);
+
+}
+
+footer {
+
+    margin-top:80px;
+
+    font-size:11px;
+
+    opacity:.5;
+
+    letter-spacing:2px;
+
+}
+
+@media(max-width:700px) {
+
+    body {
+
+        padding:15px;
+
+    }
+
+    .home-link {
+
+        font-size:13px;
+
+    }
+
+    .collection-number {
+
+        font-size:10px;
+
+    }
+
+    h1 {
+
+        font-size:18px;
+
+        letter-spacing:4px;
+
+    }
+
+    .placeholder {
+
+        margin-top:35px;
+
+    }
+
+    .status {
+
+        font-size:10px;
+
+        letter-spacing:2px;
+
+    }
+
+    .note {
+
+        max-width:280px;
+
+        font-size:9px;
+
+    }
+
+    .back-link {
+
+        font-size:12px;
+
+    }
+
+    footer {
+
+        margin-top:60px;
+
+        font-size:9px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<a
+    class="home-link"
+    href="index.html"
+>
+    home
+</a>
+
+
+<main>
+
+
+    <div class="collection-number">
+        ᶻ𝗓𐰁 [◉"]
+    </div>
+
+
+    <h1>
+        [redacted]
+    </h1>
+
+
+    <div class="placeholder">
+
+
+        <div class="symbol">
+            ◌
+        </div>
+
+
+        <div class="status">
+            in the workshop
+        </div>
+
+
+        <div class="note">
+            don't wake me up, i'm still dreaming...
+        </div>
+
+
+    </div>
+
+
+    <a
+        class="back-link"
+        href="collections.html"
+    >
+        ← collections
+    </a>
+
+
+</main>
+
+
+<footer>
+
+    © lily deng • 2026–
+
+</footer>
+
+
+</body>
+
+</html>
