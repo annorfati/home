@@ -991,29 +991,38 @@ footer {
 
   </div>
 
-  <div class="work-label">
+<div class="work locked-work">
 
-    4 — Tyrian Lo
+    <div class="work-label">
 
-    <span class="lock">
-        <span class="lock-inner">
-            🔒︎
+        4 — Tyrian Lo
+
+        <span class="lock">
+            <span class="lock-inner">
+                🔒︎
+            </span>
         </span>
-    </span>
 
-  </div>
+    </div>
 
-  <div class="work-label">
+</div>
 
-    4 — Dialogue (Exeunt)
 
-    <span class="lock">
-        <span class="lock-inner">
-            🔒︎
+<div class="work locked-work">
+
+    <div class="work-label">
+
+        5 — Dialogue (Exeunt)
+
+        <span class="lock">
+            <span class="lock-inner">
+                🔒︎
+            </span>
         </span>
-    </span>
 
-  </div>
+    </div>
+
+</div>
 
 <button id="prev" class="nav-arrow">
   ←
@@ -1306,33 +1315,69 @@ function updateNavigation() {
     const images =
         getCurrentImages();
 
+
     if (isLocked) {
 
-        prevBtn.style.display =
+        previous.style.display =
             currentWork > 0
                 ? "block"
                 : "none";
 
-        nextBtn.style.display =
+        next.style.display =
             currentWork < works.length - 1
                 ? "block"
+                : "none";
+
+        previous.style.opacity =
+            currentWork > 0
+                ? "0.6"
+                : "0";
+
+        next.style.opacity =
+            currentWork < works.length - 1
+                ? "0.6"
+                : "0";
+
+        previous.style.pointerEvents =
+            currentWork > 0
+                ? "auto"
+                : "none";
+
+        next.style.pointerEvents =
+            currentWork < works.length - 1
+                ? "auto"
                 : "none";
 
         return;
 
     }
 
-    prevBtn.style.display =
-        currentImage > 0 || currentWork > 0
-            ? "block"
-            : "none";
+
+    previous.style.display = "block";
+    next.style.display = "block";
 
 
-    nextBtn.style.display =
+    const canGoPrevious =
+        currentImage > 0 ||
+        currentWork > 0;
+
+    const canGoNext =
         currentImage < images.length - 1 ||
-        currentWork < works.length - 1
-            ? "block"
-            : "none";
+        currentWork < works.length - 1;
+
+
+    previous.style.opacity =
+        canGoPrevious ? "0.6" : "0";
+
+    next.style.opacity =
+        canGoNext ? "0.6" : "0";
+
+
+    previous.style.pointerEvents =
+        canGoPrevious ? "auto" : "none";
+
+    next.style.pointerEvents =
+        canGoNext ? "auto" : "none";
 
 }
 
