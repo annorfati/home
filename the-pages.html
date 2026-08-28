@@ -401,12 +401,31 @@ body {
   align-items: center;
 }
 
+.work-images {
+  position: relative;
+}
+
 .work-images img {
   display: none;
+  opacity: 0;
 }
 
 .work-images img.active-image {
   display: block;
+  opacity: 1;
+  animation: imageFadeIn 0.6s ease forwards;
+}
+
+@keyframes imageFadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
 }
 
 .work-label {
@@ -1086,6 +1105,56 @@ function showCurrent() {
 
 }
 
+function changeImage(newImage) {
+
+  const images = getCurrentImages();
+
+  const imageContainer =
+    works[currentWork].querySelector(".work-images");
+
+  const currentImageElement =
+    images[currentImage];
+
+  currentImageElement.style.transition =
+    "opacity 0.35s ease";
+
+  currentImageElement.style.opacity = "0";
+
+  setTimeout(() => {
+
+    images.forEach((image, index) => {
+
+      image.classList.toggle(
+        "active-image",
+        index === newImage
+      );
+
+      if (index === newImage) {
+        image.style.opacity = "0";
+      }
+
+    });
+
+    currentImage = newImage;
+
+    setTimeout(() => {
+
+      const newImageElement =
+        images[currentImage];
+
+      newImageElement.style.transition =
+        "opacity 0.6s ease";
+
+      newImageElement.style.opacity = "1";
+
+    }, 80);
+
+    updateNavigation();
+
+  }, 350);
+
+}
+  
 startArrow.addEventListener("click", () => {
 
   preface.classList.remove("show");
@@ -1130,11 +1199,10 @@ previous.addEventListener("click", () => {
 
   if (currentImage > 0) {
 
-    currentImage--;
+  changeImage(currentImage - 1);
 
-    showCurrent();
+  return;
 
-    return;
   }
 
   if (currentWork > 0) {
@@ -1157,13 +1225,11 @@ next.addEventListener("click", () => {
 
   if (currentImage < images.length - 1) {
 
-    currentImage++;
+  changeImage(currentImage + 1);
 
-    showCurrent();
+  return;
 
-    return;
-
-  }
+}
 
   if (currentWork < works.length - 1) {
 
