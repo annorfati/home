@@ -256,8 +256,8 @@ img {
   opacity: 0;
   transform: scale(0.97);
 
-  animation: reveal 4s ease forwards;
-  animation-delay: 3.2s;
+  animation: reveal 3s ease forwards;
+  animation-delay: 2s;
 
   max-width: 90vw;
   max-height: 75vh;
@@ -305,8 +305,8 @@ img {
   letter-spacing: 1.5px;
   text-align: center;
 
-  animation: fadeInCaption 2s ease forwards;
-  animation-delay: 7.2s;
+  animation: fadeInCaption 1.5s ease forwards;
+  animation-delay: 5s;
 }
 
 .fragment{
@@ -316,8 +316,8 @@ img {
     display:inline-block;
 
     transition:
-        opacity 5s ease,
-        transform 6s cubic-bezier(.22,.61,.36,1);
+        opacity 3.5s ease,
+        transform 4s cubic-bezier(.22,.61,.36,1);
 
 }
   
@@ -683,7 +683,7 @@ setTimeout(() => {
     fragment.style.opacity = brightness;
     fragment.style.transform = "translate(0,0)";
 
-}, distance * 35);
+}, distance * 20);
 
     });
 
