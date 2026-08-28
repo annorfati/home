@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    background:#282020;
+    color:#A28B8B;
+    font-family:Commit Mono, monospace;
+    margin:0;
+    padding:20px;
+    text-align:center;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.home-link{
+
+    display:inline-block;
+    margin-top:20px;
+    margin-bottom:20px;
+
+    color:#CBBEBE;
+    text-decoration:none;
+
+    letter-spacing:3px;
+    font-size:14px;
+
+    opacity:.6;
+
+    transition:.3s;
+
+}
+
+.home-link:hover{
+    opacity:1;
+}
+
+h1{
+
+    font-weight:100;
+    font-size:22px;
+    letter-spacing:6px;
+
+    margin-top:10px;
+
+    opacity:0;
+
+    animation:
+        fadeIn 2s forwards;
+
+}
+
+.subtitle{
+
+    font-size:13px;
+    letter-spacing:2px;
+
+    color:#CBBEBE;
+
+    margin-bottom:55px;
+
+    opacity:0;
+
+    animation:
+        fadeIn 2s forwards;
+
+    animation-delay:.5s;
+
+    transition:
+        opacity .8s ease;
+
+    height:30px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.begin{
+
+    display:inline-block;
+
+    margin-bottom:65px;
+
+    color:#DFD7D7;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    opacity:0;
+
+    animation:
+        fadeIn 1.5s forwards;
+
+    animation-delay:.8s;
+
+    transition:
+        opacity .35s ease;
+
+}
+
+.begin:hover{
+    opacity:.55;
+}
+
+.contents{
+
+    max-width:720px;
+
+    margin:auto;
+
+}
+
+.entry{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    text-align:left;
+
+    padding:35px 0;
+
+    border-bottom:
+        1px solid rgba(203,190,190,.08);
+
+    opacity:0;
+
+    animation:
+        fadeIn 1.5s forwards;
+
+    transition:
+        opacity .35s ease,
+        border-color .35s ease;
+
+}
+
+.entry:nth-child(1){
+    animation-delay:1.3s;
+}
+
+.entry:nth-child(2){
+    animation-delay:1.5s;
+}
+
+.entry:nth-child(3){
+    animation-delay:1.7s;
+}
+
+.entry:nth-child(4){
+    animation-delay:1.9s;
+}
+
+.entry:nth-child(5){
+    animation-delay:2.1s;
+}
+
+.entry:hover{
+
+    border-color:
+        rgba(223,215,215,.35);
+
+}
+
+.entry:active{
+
+    opacity:.7;
+
+}
+
+.entry-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.entry-number{
+
+    width:35px;
+
+    flex-shrink:0;
+
+    color:#8F7F7F;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+}
+
+.entry-title{
+
+    flex:1;
+
+    color:#DFD7D7;
+
+    font-size:17px;
+
+    letter-spacing:3px;
+
+    transition:
+        opacity .35s ease;
+
+}
+
+
+.arrow{
+
+    display:inline-block;
+
+    padding-left:20px;
+
+    color:#CBBEBE;
+
+    opacity:.5;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+}
+
+.entry:hover .arrow{
+
+    transform:
+        translateX(6px);
+
+    opacity:.9;
+
+}
+
+.entry:hover .entry-title{
+
+    opacity:1;
+
+}
+
+
+.entry-date{
+
+    margin-left:35px;
+
+    margin-top:9px;
+
+    color:#8F7F7F;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+}
+
+.entry-artwork{
+
+    margin-left:35px;
+
+    margin-top:8px;
+
+    color:#CBBEBE;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    opacity:.6;
+
+}
+
+.bottom-home{
+
+    display:inline-block;
+
+    margin-top:80px;
+
+    color:#CBBEBE;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    opacity:.6;
+
+    transition:.3s;
+
+}
+
+.bottom-home:hover{
+
+    opacity:1;
+
+}
+
+footer{
+
+    margin-top:120px;
+
+    font-size:11px;
+
+    opacity:.5;
+
+    letter-spacing:2px;
+
+}
+
+@media(max-width:700px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+
+    .subtitle{
+
+        font-size:11px;
+
+        letter-spacing:1.5px;
+
+        margin-bottom:45px;
+
+    }
+
+
+    .begin{
+
+        font-size:12px;
+
+        margin-bottom:50px;
+
+    }
+
+
+    .entry{
+
+        padding:30px 0;
+
+    }
+
+
+    .entry-row{
+
+        gap:12px;
+
+    }
+
+
+    .entry-number{
+
+        width:25px;
+
+        font-size:10px;
+
+    }
+
+
+    .entry-title{
+
+        font-size:15px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .arrow{
+
+        font-size:16px;
+
+        padding-left:10px;
+
+    }
+
+
+    .entry-date{
+
+        margin-left:37px;
+
+        font-size:9px;
+
+    }
+
+
+    .entry-artwork{
+
+        margin-left:37px;
+
+        font-size:8px;
+
+    }
+
+
+    .bottom-home{
+
+        margin-top:60px;
+
+        font-size:12px;
+
+    }
+
+
+    footer{
+
+        margin-top:80px;
+
+        font-size:9px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<a class="home-link" href="index.html">
+    home
+</a>
+
+
+<h1>
+    billets doux
+</h1>
+
+
+<p class="subtitle" id="subtitle">
+    .
+</p>
+
+
+<a class="begin" href="billets-doux-1.html">
+    start →
+</a>
+
+
+<div class="contents">
+  
+        <a
+        class="entry"
+        href="billets-doux-1.html"
+    >
+
+        <div class="entry-row">
+
+            <span class="entry-number">
+                00
+            </span>
+
+            <span class="entry-title">
+                nocturnal snowstorm
+            </span>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </div>
+
+        <div class="entry-date">
+            23rd july 2026
+        </div>
+
+    </a>
+  
+    <a
+        class="entry"
+        href="billets-doux-1.html"
+    >
+
+        <div class="entry-row">
+
+            <span class="entry-number">
+                01
+            </span>
+
+            <span class="entry-title">
+                heart child
+            </span>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </div>
+
+        <div class="entry-date">
+            16th july 2026
+        </div>
+
+    </a>
+
+    <a
+        class="entry"
+        href="billets-doux-2.html"
+    >
+
+        <div class="entry-row">
+
+            <span class="entry-number">
+                02
+            </span>
+
+            <span class="entry-title">
+                crossing
+            </span>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </div>
+
+        <div class="entry-date">
+            31st july 2026
+        </div>
+
+        <div class="entry-artwork">
+            ◇ pale nightshade
+        </div>
+
+    </a>
+
+
+    <a
+    class="entry"
+    href="consummation.html"
+    >
+
+    <div class="entry-row">
+
+        <span class="entry-number">
+            03
+        </span>
+
+        <span class="entry-title">
+            hors d'oeuvres & the consummation
+        </span>
+
+        <span class="arrow">
+            →
+        </span>
+
+      </div>
+
+    <div class="entry-date">
+        3rd–7th august 2026
+    </div>
+
+   </a>
+
+</div>
+
+
+<a
+    class="bottom-home"
+    href="index.html"
+>
+    home
+</a>
+
+
+<footer>
+
+    © lily deng • 2026–
+
+</footer>
+
+
+<script>
+
+const subtitles = [
+    ".",
+    "..",
+    "...",
+    "...♡",
+    "...♡"
+];
+
+let subtitleIndex = 0;
+
+
+setInterval(function(){
+
+    const subtitle =
+        document.getElementById("subtitle");
+
+
+    subtitle.style.opacity = "0";
+
+
+    setTimeout(function(){
+
+        subtitleIndex =
+            (subtitleIndex + 1)
+            % subtitles.length;
+
+
+        subtitle.innerHTML =
+            subtitles[subtitleIndex];
+
+
+        subtitle.style.opacity = "1";
+
+
+    },400);
+
+
+},750);
+
+</script>
+
+
+</body>
+
+</html>
