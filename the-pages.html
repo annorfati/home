@@ -747,32 +747,46 @@ footer {
 
 
   #prev {
-  left: 50%;
-  transform: translateX(-60px);
-  top: auto;
-  bottom: 20px;
+    left:50%;
+    transform:translateX(-55px);
+    top:auto;
+    bottom:65px;
   }
 
   #next {
-  right: 50%;
-  transform: translateX(60px);
-  top: auto;
-  bottom: 20px;
+    right:50%;
+    transform:translateX(55px);
+    top:auto;
+    bottom:65px;
   }
   
   footer {
-    bottom: 12px;
-    font-size: 9px;
-  }
+    bottom:3px;
+    font-size:8px;
+   }
 
-  .bottom-navigation {
+ .bottom-navigation {
 
-  left: 20px;
-  bottom: 20px;
+    position:fixed;
 
-  gap: 20px;
+    left:50%;
+    bottom:20px;
 
-}
+    transform:translateX(-50%);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    width:max-content;
+
+    z-index:200;
+
+ }
 
 
 .contents-link {
@@ -1032,17 +1046,18 @@ footer {
   →
 </button>
 
+</div>
+  
 <div class="bottom-navigation">
 
-  <a class="contents-link" href="collections.html">
+ <a class="contents-link" href="collections.html">
     ← collections
-  </a>
+ </a>
 
-  <a class="home-link" href="index.html">
+
+ <a class="home-link" href="index.html">
     home
-  </a>
-
-</div>
+ </a>
   
 <footer>
   © lily deng • 2026–
