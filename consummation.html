@@ -211,8 +211,8 @@ footer {
   display: inline-block;
 
   transition:
-    opacity 7s ease,
-    transform 5s cubic-bezier(.22,.61,.36,1);
+    opacity 3.5s ease,
+    transform 3s cubic-bezier(.22,.61,.36,1);
 
 }
 
@@ -225,26 +225,6 @@ footer {
 
   transition: none !important;
 
-}
-
-.tap-to-load {
-  text-align: center;
-  margin-top: -45px;
-  margin-bottom: 55px;
-
-  color: #E8CFCF;
-  font-size: 10px;
-  letter-spacing: 2px;
-
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity 1.5s ease;
-}
-
-.tap-to-load.visible {
-  opacity: 0.55;
-  pointer-events: auto;
 }
   
 .poem-title {
@@ -313,12 +293,6 @@ footer {
 
     line-height: 1.7;
 
-  }
-  
-  .tap-to-load {
-    margin-top: -30px;
-    margin-bottom: 40px;
-    font-size: 9px;
   }
   
   .poem-title {
@@ -406,10 +380,6 @@ footer {
   <div class="poem-title">
     The Consummation
   </div>
-
- <div class="tap-to-load">
-    tap to fully load
-  </div>
   
   <p>
     <span class="fragment">
@@ -484,16 +454,12 @@ footer {
 
 const welcome = document.querySelector(".welcome");
 const poem = document.querySelector(".poem");
-const tapPrompt = document.querySelector(".tap-to-load");
 
 const horsFragments =
   document.querySelectorAll(".hors-doeuvres .fragment");
 
 const poemFragments =
   document.querySelectorAll(".poem .fragment");
-
-let poemLoading = false;
-let poemFinished = false;
 
 horsFragments.forEach((fragment, index) => {
 
@@ -513,70 +479,41 @@ welcome.addEventListener("click", (event) => {
 
   poem.classList.add("show");
 
-  poemLoading = true;
-
-  setTimeout(() => {
-
-    if (!poemFinished) {
-      tapPrompt.classList.add("visible");
-    }
-
-  }, 1200);
-
   poemFragments.forEach((fragment, index) => {
 
     setTimeout(() => {
 
-      if (!poemFinished) {
+      fragment.style.opacity = "1";
 
-        fragment.style.opacity = "1";
-        fragment.style.transform = "translate(0, 0)";
+      fragment.style.transform =
+        "translate(0, 0)";
 
-      }
-
-    }, 500 + index * 700);
+    }, 400 + index * 450);
 
   });
 
-  const totalRevealTime =
-    500 + (poemFragments.length - 1) * 700 + 4000;
-
-
-  setTimeout(() => {
-
-    if (!poemFinished) {
-
-      poemFinished = true;
-      poemLoading = false;
-
-      tapPrompt.classList.remove("visible");
-
-    }
-
-  }, totalRevealTime);
-
 });
 
-tapPrompt.addEventListener("click", (event) => {
 
-  event.stopPropagation();
+/* PORTAL */
 
-  if (!poemLoading || poemFinished) return;
+setTimeout(() => {
+
+  document
+    .getElementById("portal")
+    .classList.add("hole");
+
+}, 8000);
 
 
-  poemFragments.forEach(fragment => {
+document
+  .getElementById("portal")
+  .addEventListener("click", () => {
 
-    fragment.classList.add("instant");
+    window.location.href =
+      "consummation.html";
 
   });
-
-
-  poemFinished = true;
-  poemLoading = false;
-
-  tapPrompt.classList.remove("visible");
-
-});
 
 </script>
 
