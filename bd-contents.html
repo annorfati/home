@@ -322,19 +322,39 @@ h1{
 
     opacity:.6;
 
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-
     animation:
-        lockWiggle 3s ease-in-out infinite;
+        lockWiggle 1.2s ease-in-out infinite;
 }
 
-.locked-entry:hover .lock {
+
+.lock-inner {
+
+    display:inline-block;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+
+}
+
+
+.locked-entry:hover .lock-inner {
+
     opacity:1;
 
-    transform:translateX(3px);
+    transform:translateX(4px);
+
 }
+
+
+.locked-entry:active .lock-inner {
+
+    opacity:1;
+
+    transform:translateX(4px);
+
+}
+
 
 @keyframes lockWiggle {
 
@@ -344,9 +364,27 @@ h1{
 
     }
 
-    50% {
+    20% {
 
         transform:translateX(-4px);
+
+    }
+
+    40% {
+
+        transform:translateX(4px);
+
+    }
+
+    60% {
+
+        transform:translateX(-3px);
+
+    }
+
+    80% {
+
+        transform:translateX(2px);
 
     }
 
@@ -591,7 +629,9 @@ footer{
         </span>
 
         <span class="lock">
+           <span class="lock-inner">
             🔒︎
+           </span>
         </span>
 
     </div>
@@ -701,9 +741,11 @@ footer{
         </span>
 
         <span class="lock">
+           <span class="lock-inner">
             🔒︎
+           </span>
         </span>
-
+                
     </div>
 
     <div class="entry-date">
@@ -725,7 +767,9 @@ footer{
         </span>
 
         <span class="lock">
+           <span class="lock-inner">
             🔒︎
+           </span>
         </span>
 
     </div>
