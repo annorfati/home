@@ -284,6 +284,59 @@ h1{
 
 }
 
+.locked-entry {
+
+    cursor: default;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 1.5s forwards;
+
+}
+
+
+.locked-entry .entry-title {
+
+    color:#8F7F7F;
+
+    opacity:.65;
+
+}
+
+
+.lock {
+
+    display:inline-block;
+
+    color:#8F7F7F;
+
+    font-size:13px;
+
+    opacity:.6;
+
+    animation:
+        lockWiggle 3s ease-in-out infinite;
+
+}
+
+
+@keyframes lockWiggle {
+
+    0%,100% {
+
+        transform:translateX(0);
+
+    }
+
+    50% {
+
+        transform:translateX(-4px);
+
+    }
+
+}
+    
 .bottom-home{
 
     display:inline-block;
@@ -510,32 +563,29 @@ footer{
 
 <div class="contents">
   
-        <a
-        class="entry"
-        href="nocturnal-snowstorm.html"
-    >
+        <div class="entry locked-entry">
+            
+            <div class="entry-row">
+                
+                <span class="entry-number">
+                    00
+                </span>
+            
+        <span class="entry-title">
+            nocturnal snowstorm
+        </span>
 
-        <div class="entry-row">
+        <span class="lock">
+            🔒︎
+        </span>
 
-            <span class="entry-number">
-                00
-            </span>
+    </div>
 
-            <span class="entry-title">
-                nocturnal snowstorm
-            </span>
-
-            <span class="arrow">
-                →
-            </span>
-
-        </div>
-
-        <div class="entry-date">
-            23rd july 2026
-        </div>
-
-    </a>
+    <div class="entry-date">
+        23rd july 2026
+    </div>
+        
+    </div>
   
     <a
         class="entry"
@@ -625,6 +675,53 @@ footer{
 
 </div>
 
+        <div class="entry locked-entry">
+            
+            <div class="entry-row">
+                
+                <span class="entry-number">
+                    04
+                </span>
+            
+        <span class="entry-title">
+            defloration
+        </span>
+
+        <span class="lock">
+            🔒︎
+        </span>
+
+    </div>
+
+    <div class="entry-date">
+        11th august 2026
+    </div>
+        
+    </div>
+
+            <div class="entry locked-entry">
+            
+            <div class="entry-row">
+                
+                <span class="entry-number">
+                    05
+                </span>
+            
+        <span class="entry-title">
+            an ordinary betting parlour.
+        </span>
+
+        <span class="lock">
+            🔒︎
+        </span>
+
+    </div>
+
+    <div class="entry-date">
+        19th august 2026
+    </div>
+        
+    </div>
 
 <div class="bottom-navigation">
 
