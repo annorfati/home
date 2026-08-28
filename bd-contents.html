@@ -314,6 +314,7 @@ h1{
 }
 
 .lock {
+
     display:inline-block;
 
     color:#8F7F7F;
@@ -322,11 +323,43 @@ h1{
 
     opacity:.6;
 
+}
+    
+.lock.clicked {
+
     animation:
-        lockWiggle 1.2s ease-in-out infinite;
+        lockWiggle 0.8s ease-in-out;
+
 }
 
+@keyframes lockWiggle {
 
+    0% {
+        transform:translateX(0);
+    }
+
+    20% {
+        transform:translateX(-4px);
+    }
+
+    40% {
+        transform:translateX(4px);
+    }
+
+    60% {
+        transform:translateX(-3px);
+    }
+
+    80% {
+        transform:translateX(2px);
+    }
+
+    100% {
+        transform:translateX(0);
+    }
+
+}
+    
 .lock-inner {
 
     display:inline-block;
@@ -352,41 +385,6 @@ h1{
     opacity:1;
 
     transform:translateX(4px);
-
-}
-
-
-@keyframes lockWiggle {
-
-    0%,100% {
-
-        transform:translateX(0);
-
-    }
-
-    20% {
-
-        transform:translateX(-4px);
-
-    }
-
-    40% {
-
-        transform:translateX(4px);
-
-    }
-
-    60% {
-
-        transform:translateX(-3px);
-
-    }
-
-    80% {
-
-        transform:translateX(2px);
-
-    }
 
 }
     
@@ -847,6 +845,23 @@ setInterval(function(){
 
 
 },750);
+
+document.querySelectorAll(".locked-work").forEach(work => {
+
+    work.addEventListener("click", () => {
+
+        const lock =
+            work.querySelector(".lock");
+
+        lock.classList.remove("clicked");
+
+        void lock.offsetWidth;
+
+        lock.classList.add("clicked");
+
+    });
+
+});
 
 </script>
 
