@@ -288,8 +288,6 @@ h1{
 
     display:inline-block;
 
-    margin-top:80px;
-
     color:#CBBEBE;
 
     text-decoration:none;
@@ -310,6 +308,48 @@ h1{
 
 }
 
+.bottom-navigation {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:80px;
+
+}
+
+
+.back-link {
+
+    color:#CBBEBE;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    opacity:.6;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+
+}
+
+
+.back-link:hover {
+
+    opacity:1;
+
+    transform:translateX(-4px);
+
+}
+    
 footer{
 
     margin-top:120px;
@@ -412,12 +452,23 @@ footer{
 
     .bottom-home{
 
-        margin-top:60px;
-
         font-size:12px;
 
     }
 
+     .bottom-navigation {
+
+        gap:25px;
+
+        margin-top:60px;
+
+    }
+
+    .back-link {
+
+        font-size:12px;
+
+    }
 
     footer{
 
@@ -425,7 +476,7 @@ footer{
 
         font-size:9px;
 
-    }
+     }
 
 }
 
@@ -575,13 +626,23 @@ footer{
 </div>
 
 
-<a
-    class="bottom-home"
-    href="index.html"
->
-    home
-</a>
+<div class="bottom-navigation">
 
+    <a
+        class="back-link"
+        href="collections.html"
+    >
+        ← collections
+    </a>
+
+    <a
+        class="bottom-home"
+        href="index.html"
+    >
+        home
+    </a>
+
+</div>
 
 <footer>
 
