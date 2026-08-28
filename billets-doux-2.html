@@ -635,13 +635,13 @@ const tapPrompt = document.querySelector(".tap-to-load");
 
 artwork.addEventListener("click", () => {
 
-container.classList.add("hide");
+    container.classList.add("hide");
 
-content.classList.add("show");
+    content.classList.add("show");
 
-requestAnimationFrame(() => {
-    revealRipple();
-});
+    setTimeout(() => {
+        revealRipple();
+    }, 2500);
 
 });
   
