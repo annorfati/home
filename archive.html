@@ -69,29 +69,31 @@ h1 {
 
 .subtitle {
 
-  opacity: 0;
+    opacity:0;
 
-  font-size: 13px;
+    font-size:13px;
 
-  letter-spacing: 2px;
+    letter-spacing:2px;
 
-  color: #CBBEBE;
+    color:#CBBEBE;
 
-  animation: fadeIn 2s forwards;
+    animation:fadeIn 2s forwards;
 
-  animation-delay: 1s;
+    animation-delay:1s;
 
-  transition: opacity 2s ease;
+    transition:opacity 2s ease;
 
-  height: 55px;
+    height:45px;
 
-  display:flex;
+    line-height:1.6;
 
-  justify-content:center;
+}
 
-  align-items:center;
+.subtitle-citation {
 
-  line-height:1.6;
+    display:inline-block;
+
+    margin-left:-15px;
 
 }
   
@@ -1029,8 +1031,8 @@ updateOpacity();
 const subtitles = [
   "sketches, standalone pieces, and experiments",
   "sketches, standalone pieces, and experiments",
-  "<em>Life imitates art far more than art imitates life</em><br>The Decay of Lying (1981), Oscar Wilde (1854-1900)",
-  "<em>Life imitates art far more than art imitates life</em><br>The Decay of Lying (1981), Oscar Wilde (1854-1900)",
+  "<em>Life imitates art far more than art imitates life</em><br><span class='subtitle-citation'>The Decay of Lying (1981), Oscar Wilde (1854-1900)</span>",
+  "<em>Life imitates art far more than art imitates life</em><br><span class='subtitle-citation'>The Decay of Lying (1981), Oscar Wilde (1854-1900)</span>",
   "amor fati",
   "annorfati"
 ];
@@ -1076,7 +1078,6 @@ function showPage(page){
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
 
-    // Fade every visible artwork away
 artworks.forEach(artwork=>{
 
     if(artwork.style.display !== "none"){
@@ -1105,7 +1106,7 @@ setTimeout(()=>{
 
         renderPagination();
 
-        // Small delay so the browser registers display:block
+
         requestAnimationFrame(()=>{
 
             let delay = 0;
